@@ -153,5 +153,20 @@
   <ItemGroup>
     <None Include="Resources\1-18632_free-film-wallpaper-clip-art-movie-logo-without-background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peliculaR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peliculaR1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupaR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anadirR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminarR.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

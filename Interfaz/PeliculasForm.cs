@@ -15,15 +15,18 @@ namespace Interfaz {
         ServicioDeVideoclub.VideoclubServicioClient vid;
         public PeliculasForm(ServicioDeVideoclub.VideoclubServicioClient vid) {
             InitializeComponent();
-            MuestraPanel(PnMostrar);
+            //PanelBuscarIzda.Visible = false;
+            //MuestraPanel(PnMostrar);
             this.vid = vid;
         }
         private async void BtMostrarPeliculas_Click(object sender, EventArgs e) {
+            //PanelBuscarIzda.Visible = false;
             ServicioDeVideoclub.Pelicula[] peliculas = await vid.DevuelvePeliculasAsync();
 
             DGVPeliculas.DataSource = peliculas;
+            
 
-            MuestraPanel(PnMostrar);
+            //MuestraPanel(PnMostrar);
         }
 
         private void BtAnadirPelicula_Click(object sender, EventArgs e) {
@@ -74,7 +77,9 @@ namespace Interfaz {
         }
 
         private void BtBuscarPelicula_Click(object sender, EventArgs e) {
-            MuestraPanel(PnBusqueda);
+            //MuestraPanel(PnBusqueda);
+            PanelBuscarIzda.Visible = true;
+
 
             CmbBuscarGenero.DataSource = Generos.DevuelveGeneros();
         }
