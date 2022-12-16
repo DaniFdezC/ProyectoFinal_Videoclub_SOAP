@@ -18,8 +18,8 @@ namespace Interfaz {
             MuestraPanel(PnMostrar);
             this.vid = vid;
         }
-        private void BtMostrarPeliculas_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Pelicula[] peliculas = vid.DevuelvePeliculas();
+        private async void BtMostrarPeliculas_Click(object sender, EventArgs e) {
+            ServicioDeVideoclub.Pelicula[] peliculas = await vid.DevuelvePeliculasAsync();
 
             DGVPeliculas.DataSource = peliculas;
 
@@ -56,8 +56,8 @@ namespace Interfaz {
             }
         }
 
-        private void BtEliminaPelicula_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Pelicula[] peliculas = vid.DevuelvePeliculas();
+        private async void BtEliminaPelicula_Click(object sender, EventArgs e) {
+            ServicioDeVideoclub.Pelicula[] peliculas = await vid.DevuelvePeliculasAsync();
 
             DGVElimPeli.DataSource = peliculas;
 
@@ -76,11 +76,28 @@ namespace Interfaz {
         private void BtBuscarPelicula_Click(object sender, EventArgs e) {
             MuestraPanel(PnBusqueda);
 
-            ListBGeneroBuscar.DataSource = Generos.DevuelveGeneros();
+            CmbBuscarGenero.DataSource = Generos.DevuelveGeneros();
         }
 
-        private void BtBuscarNovedades_Click(object sender, EventArgs e) {
-            DGVBuscar.DataSource = vid.DevuelvePeliculasNovedades();
+        private async void BtBuscarNovedades_Click(object sender, EventArgs e) {
+            ServicioDeVideoclub.Pelicula[] novedades = await vid.DevuelvePeliculasNovedadesAsync();
+
+            if (novedades.Length == 0)
+                MessageBox.Show("No hay películas creadas hace menos de 7 días");
+            else
+                DGVBuscar.DataSource = vid.DevuelvePeliculasNovedades();
+
+        }
+
+        private async void BtBuscarPorGenero_Click(object sender, EventArgs e) {
+            string genero = CmbBuscarGenero.SelectedItem.ToString();
+            ServicioDeVideoclub.Pelicula[] resultado = await vid.DevuelvePeliculasPorGeneroAsync(genero);
+
+            if (resultado.Length == 0)
+                MessageBox.Show("No hay películas registradas con ese género");
+            else
+                DGVBuscar.DataSource = resultado;
+
         }
     }
 }

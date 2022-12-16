@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz {
-    public partial class Form1 : Form {
+    public partial class PrincipalForm : Form {
         ServicioDeVideoclub.VideoclubServicioClient vid = new ServicioDeVideoclub.VideoclubServicioClient();
-        public Form1() {
+        public PrincipalForm() {
             InitializeComponent();
             this.MaximizeBox = false;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -31,5 +32,8 @@ namespace ServicioVideoClub {
 
         [OperationContract]
         Pelicula[] DevuelvePeliculasNovedades();
+
+        [OperationContract]
+        Pelicula[] DevuelvePeliculasPorGenero(string genero);
     }
 }

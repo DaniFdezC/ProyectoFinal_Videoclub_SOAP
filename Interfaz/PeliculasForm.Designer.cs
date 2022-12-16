@@ -42,11 +42,11 @@
             this.DGVElimPeli = new System.Windows.Forms.DataGridView();
             this.BtElim = new System.Windows.Forms.Button();
             this.PnBusqueda = new System.Windows.Forms.Panel();
-            this.ListBGeneroBuscar = new System.Windows.Forms.ListBox();
             this.BtBuscarPorGenero = new System.Windows.Forms.Button();
             this.BtBuscarNovedades = new System.Windows.Forms.Button();
             this.DGVBuscar = new System.Windows.Forms.DataGridView();
             this.BtMostrarPeliculas = new System.Windows.Forms.Button();
+            this.CmbBuscarGenero = new System.Windows.Forms.ComboBox();
             this.PnAnadirPelicula.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumYear)).BeginInit();
             this.PnMostrar.SuspendLayout();
@@ -274,7 +274,7 @@
             // 
             // PnBusqueda
             // 
-            this.PnBusqueda.Controls.Add(this.ListBGeneroBuscar);
+            this.PnBusqueda.Controls.Add(this.CmbBuscarGenero);
             this.PnBusqueda.Controls.Add(this.BtBuscarPorGenero);
             this.PnBusqueda.Controls.Add(this.BtBuscarNovedades);
             this.PnBusqueda.Controls.Add(this.DGVBuscar);
@@ -283,33 +283,23 @@
             this.PnBusqueda.Size = new System.Drawing.Size(653, 528);
             this.PnBusqueda.TabIndex = 24;
             // 
-            // ListBGeneroBuscar
-            // 
-            this.ListBGeneroBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListBGeneroBuscar.FormattingEnabled = true;
-            this.ListBGeneroBuscar.ItemHeight = 25;
-            this.ListBGeneroBuscar.Location = new System.Drawing.Point(507, 490);
-            this.ListBGeneroBuscar.Name = "ListBGeneroBuscar";
-            this.ListBGeneroBuscar.Size = new System.Drawing.Size(133, 29);
-            this.ListBGeneroBuscar.Sorted = true;
-            this.ListBGeneroBuscar.TabIndex = 25;
-            // 
             // BtBuscarPorGenero
             // 
-            this.BtBuscarPorGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtBuscarPorGenero.Location = new System.Drawing.Point(255, 461);
+            this.BtBuscarPorGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtBuscarPorGenero.Location = new System.Drawing.Point(192, 460);
             this.BtBuscarPorGenero.Name = "BtBuscarPorGenero";
-            this.BtBuscarPorGenero.Size = new System.Drawing.Size(246, 64);
+            this.BtBuscarPorGenero.Size = new System.Drawing.Size(195, 64);
             this.BtBuscarPorGenero.TabIndex = 4;
             this.BtBuscarPorGenero.Text = "Buscar por genero";
             this.BtBuscarPorGenero.UseVisualStyleBackColor = true;
+            this.BtBuscarPorGenero.Click += new System.EventHandler(this.BtBuscarPorGenero_Click);
             // 
             // BtBuscarNovedades
             // 
-            this.BtBuscarNovedades.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtBuscarNovedades.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtBuscarNovedades.Location = new System.Drawing.Point(3, 461);
             this.BtBuscarNovedades.Name = "BtBuscarNovedades";
-            this.BtBuscarNovedades.Size = new System.Drawing.Size(246, 64);
+            this.BtBuscarNovedades.Size = new System.Drawing.Size(183, 64);
             this.BtBuscarNovedades.TabIndex = 3;
             this.BtBuscarNovedades.Text = "Buscar novedades";
             this.BtBuscarNovedades.UseVisualStyleBackColor = true;
@@ -345,6 +335,15 @@
             this.BtMostrarPeliculas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtMostrarPeliculas.UseVisualStyleBackColor = true;
             this.BtMostrarPeliculas.Click += new System.EventHandler(this.BtMostrarPeliculas_Click);
+            // 
+            // CmbBuscarGenero
+            // 
+            this.CmbBuscarGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmbBuscarGenero.FormattingEnabled = true;
+            this.CmbBuscarGenero.Location = new System.Drawing.Point(393, 491);
+            this.CmbBuscarGenero.Name = "CmbBuscarGenero";
+            this.CmbBuscarGenero.Size = new System.Drawing.Size(133, 33);
+            this.CmbBuscarGenero.TabIndex = 26;
             // 
             // PeliculasForm
             // 
@@ -400,6 +399,6 @@
         private System.Windows.Forms.DataGridView DGVBuscar;
         private System.Windows.Forms.Button BtBuscarPorGenero;
         private System.Windows.Forms.Button BtBuscarNovedades;
-        private System.Windows.Forms.ListBox ListBGeneroBuscar;
+        private System.Windows.Forms.ComboBox CmbBuscarGenero;
     }
 }

@@ -3,7 +3,7 @@ using System.Drawing;
 using System;
 
 namespace Interfaz {
-    partial class Form1 {
+    partial class PrincipalForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

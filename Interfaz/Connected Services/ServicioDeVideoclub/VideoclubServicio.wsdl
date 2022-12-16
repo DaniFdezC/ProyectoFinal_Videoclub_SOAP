@@ -49,6 +49,12 @@
   <wsdl:message name="IVideoclubServicio_DevuelvePeliculasNovedades_OutputMessage">
     <wsdl:part name="parameters" element="tns:DevuelvePeliculasNovedadesResponse" />
   </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelvePeliculasPorGenero_InputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelvePeliculasPorGenero" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelvePeliculasPorGenero_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelvePeliculasPorGeneroResponse" />
+  </wsdl:message>
   <wsdl:portType name="IVideoclubServicio">
     <wsdl:operation name="AnadeCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/AnadeCliente" message="tns:IVideoclubServicio_AnadeCliente_InputMessage" />
@@ -77,6 +83,10 @@
     <wsdl:operation name="DevuelvePeliculasNovedades">
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedades" message="tns:IVideoclubServicio_DevuelvePeliculasNovedades_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedadesResponse" message="tns:IVideoclubServicio_DevuelvePeliculasNovedades_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DevuelvePeliculasPorGenero">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGenero" message="tns:IVideoclubServicio_DevuelvePeliculasPorGenero_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGeneroResponse" message="tns:IVideoclubServicio_DevuelvePeliculasPorGenero_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IVideoclubServicio" type="tns:IVideoclubServicio">
@@ -137,6 +147,15 @@
     </wsdl:operation>
     <wsdl:operation name="DevuelvePeliculasNovedades">
       <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevuelvePeliculasPorGenero">
+      <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGenero" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

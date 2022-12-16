@@ -58,7 +58,18 @@ namespace ServicioVideoClub {
 
             return peliculasMapeadas.ToArray();
         }
-        
+
+        public Pelicula[] DevuelvePeliculasPorGenero(string genero) {
+            List<Pelicula> peliculasMapeadas = new List<Pelicula>();
+            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasPorGenero(genero);
+
+            foreach (PeliculaNegocio peliNegocio in peliculasSinMapear) {
+                peliculasMapeadas.Add(ConversorClases.ConversorPeliculaAServidor(peliNegocio));
+            }
+
+            return peliculasMapeadas.ToArray();
+        }
+
 
         public Task<bool> AnadePelicula(string titulo, string genero, DateTime fecha) {
             return videoclub.AnadePelicula(titulo, genero, fecha);

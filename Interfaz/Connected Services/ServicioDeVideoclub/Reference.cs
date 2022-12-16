@@ -260,6 +260,12 @@ namespace Interfaz.ServicioDeVideoclub {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedades", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedadesResponse")]
         System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasNovedadesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGenero", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGeneroResponse")]
+        Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorGenero(string genero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGenero", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGeneroResponse")]
+        System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorGeneroAsync(string genero);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -343,6 +349,14 @@ namespace Interfaz.ServicioDeVideoclub {
         
         public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasNovedadesAsync() {
             return base.Channel.DevuelvePeliculasNovedadesAsync();
+        }
+        
+        public Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorGenero(string genero) {
+            return base.Channel.DevuelvePeliculasPorGenero(genero);
+        }
+        
+        public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorGeneroAsync(string genero) {
+            return base.Channel.DevuelvePeliculasPorGeneroAsync(genero);
         }
     }
 }
