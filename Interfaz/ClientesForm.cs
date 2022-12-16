@@ -73,7 +73,7 @@ namespace Interfaz {
 
                 if (panel == panelAMostrar)
                     panel.Visible = true;
-
+                 
                 else
                     panel.Visible = false;
 
