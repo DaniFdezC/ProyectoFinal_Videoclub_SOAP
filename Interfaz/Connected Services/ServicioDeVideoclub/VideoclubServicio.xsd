@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:55931/VideoclubServicio.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServicioVideoClub" />
+  <xs:import schemaLocation="http://localhost:55931/VideoclubServicio.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="AnadeCliente">
     <xs:complexType>
       <xs:sequence>
@@ -15,42 +16,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="AnadeClienteResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarCliente">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="cliente" nillable="true" type="q1:Cliente" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarClienteResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarPelicula">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="pelicula" nillable="true" type="q2:Pelicula" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarPeliculaResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DevuelveClientes">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DevuelveClientesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="DevuelveClientesResult" nillable="true" type="q3:ArrayOfCliente" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -70,6 +35,46 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EliminarCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="cliente" nillable="true" type="q1:Cliente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarClienteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarPelicula">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="pelicula" nillable="true" type="q2:Pelicula" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarPeliculaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarPeliculaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelveClientes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelveClientesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="DevuelveClientesResult" nillable="true" type="q3:ArrayOfCliente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DevuelvePeliculas">
     <xs:complexType>
       <xs:sequence />
@@ -82,15 +87,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DevuelvePeliculasNovedades">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DevuelvePeliculasNovedadesResponse">
+  <xs:element name="DevuelvePeliculasPorDias">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="DevuelvePeliculasNovedadesResult" nillable="true" type="q5:ArrayOfPelicula" />
+        <xs:element minOccurs="0" name="dias" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelvePeliculasPorDiasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="DevuelvePeliculasPorDiasResult" nillable="true" type="q5:ArrayOfPelicula" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -105,6 +112,32 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="DevuelvePeliculasPorGeneroResult" nillable="true" type="q6:ArrayOfPelicula" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelvePeliculasPorNombre">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelvePeliculasPorNombreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServicioVideoClub" minOccurs="0" name="DevuelvePeliculasPorNombreResult" nillable="true" type="q7:ArrayOfPelicula" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelveTiposPeliculas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevuelveTiposPeliculasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DevuelveTiposPeliculasResult" nillable="true" type="q8:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

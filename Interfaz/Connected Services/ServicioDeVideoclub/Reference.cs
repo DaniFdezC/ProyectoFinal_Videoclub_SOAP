@@ -225,17 +225,23 @@ namespace Interfaz.ServicioDeVideoclub {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AnadeCliente", ReplyAction="http://tempuri.org/IVideoclubServicio/AnadeClienteResponse")]
         System.Threading.Tasks.Task<bool> AnadeClienteAsync(string nombre, string apellido, string direccion, string dni);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/EliminarCliente", ReplyAction="http://tempuri.org/IVideoclubServicio/EliminarClienteResponse")]
-        void EliminarCliente(Interfaz.ServicioDeVideoclub.Cliente cliente);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AnadePelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/AnadePeliculaResponse")]
+        bool AnadePelicula(string nombre, string genero, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AnadePelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/AnadePeliculaResponse")]
+        System.Threading.Tasks.Task<bool> AnadePeliculaAsync(string nombre, string genero, System.DateTime fecha);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/EliminarCliente", ReplyAction="http://tempuri.org/IVideoclubServicio/EliminarClienteResponse")]
-        System.Threading.Tasks.Task EliminarClienteAsync(Interfaz.ServicioDeVideoclub.Cliente cliente);
+        bool EliminarCliente(Interfaz.ServicioDeVideoclub.Cliente cliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/EliminarCliente", ReplyAction="http://tempuri.org/IVideoclubServicio/EliminarClienteResponse")]
+        System.Threading.Tasks.Task<bool> EliminarClienteAsync(Interfaz.ServicioDeVideoclub.Cliente cliente);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/EliminarPelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/EliminarPeliculaResponse")]
-        void EliminarPelicula(Interfaz.ServicioDeVideoclub.Pelicula pelicula);
+        bool EliminarPelicula(Interfaz.ServicioDeVideoclub.Pelicula pelicula);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/EliminarPelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/EliminarPeliculaResponse")]
-        System.Threading.Tasks.Task EliminarPeliculaAsync(Interfaz.ServicioDeVideoclub.Pelicula pelicula);
+        System.Threading.Tasks.Task<bool> EliminarPeliculaAsync(Interfaz.ServicioDeVideoclub.Pelicula pelicula);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveClientes", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveClientesResponse")]
         Interfaz.ServicioDeVideoclub.Cliente[] DevuelveClientes();
@@ -243,29 +249,35 @@ namespace Interfaz.ServicioDeVideoclub {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveClientes", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveClientesResponse")]
         System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Cliente[]> DevuelveClientesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AnadePelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/AnadePeliculaResponse")]
-        bool AnadePelicula(string nombre, string genero, System.DateTime fecha);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AnadePelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/AnadePeliculaResponse")]
-        System.Threading.Tasks.Task<bool> AnadePeliculaAsync(string nombre, string genero, System.DateTime fecha);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculas", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasResponse")]
         Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculas();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculas", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasResponse")]
         System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedades", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedadesResponse")]
-        Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasNovedades();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorDias", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorDiasResponse")]
+        Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorDias(int dias);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedades", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasNovedadesResponse")]
-        System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasNovedadesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorDias", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorDiasResponse")]
+        System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorDiasAsync(int dias);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGenero", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGeneroResponse")]
         Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorGenero(string genero);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGenero", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorGeneroResponse")]
         System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorGeneroAsync(string genero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombre", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombreResponse")]
+        Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorNombre(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombre", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombreResponse")]
+        System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorNombreAsync(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveTiposPeliculas", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveTiposPeliculasResponse")]
+        string[] DevuelveTiposPeliculas();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveTiposPeliculas", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveTiposPeliculasResponse")]
+        System.Threading.Tasks.Task<string[]> DevuelveTiposPeliculasAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -303,19 +315,27 @@ namespace Interfaz.ServicioDeVideoclub {
             return base.Channel.AnadeClienteAsync(nombre, apellido, direccion, dni);
         }
         
-        public void EliminarCliente(Interfaz.ServicioDeVideoclub.Cliente cliente) {
-            base.Channel.EliminarCliente(cliente);
+        public bool AnadePelicula(string nombre, string genero, System.DateTime fecha) {
+            return base.Channel.AnadePelicula(nombre, genero, fecha);
         }
         
-        public System.Threading.Tasks.Task EliminarClienteAsync(Interfaz.ServicioDeVideoclub.Cliente cliente) {
+        public System.Threading.Tasks.Task<bool> AnadePeliculaAsync(string nombre, string genero, System.DateTime fecha) {
+            return base.Channel.AnadePeliculaAsync(nombre, genero, fecha);
+        }
+        
+        public bool EliminarCliente(Interfaz.ServicioDeVideoclub.Cliente cliente) {
+            return base.Channel.EliminarCliente(cliente);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarClienteAsync(Interfaz.ServicioDeVideoclub.Cliente cliente) {
             return base.Channel.EliminarClienteAsync(cliente);
         }
         
-        public void EliminarPelicula(Interfaz.ServicioDeVideoclub.Pelicula pelicula) {
-            base.Channel.EliminarPelicula(pelicula);
+        public bool EliminarPelicula(Interfaz.ServicioDeVideoclub.Pelicula pelicula) {
+            return base.Channel.EliminarPelicula(pelicula);
         }
         
-        public System.Threading.Tasks.Task EliminarPeliculaAsync(Interfaz.ServicioDeVideoclub.Pelicula pelicula) {
+        public System.Threading.Tasks.Task<bool> EliminarPeliculaAsync(Interfaz.ServicioDeVideoclub.Pelicula pelicula) {
             return base.Channel.EliminarPeliculaAsync(pelicula);
         }
         
@@ -327,14 +347,6 @@ namespace Interfaz.ServicioDeVideoclub {
             return base.Channel.DevuelveClientesAsync();
         }
         
-        public bool AnadePelicula(string nombre, string genero, System.DateTime fecha) {
-            return base.Channel.AnadePelicula(nombre, genero, fecha);
-        }
-        
-        public System.Threading.Tasks.Task<bool> AnadePeliculaAsync(string nombre, string genero, System.DateTime fecha) {
-            return base.Channel.AnadePeliculaAsync(nombre, genero, fecha);
-        }
-        
         public Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculas() {
             return base.Channel.DevuelvePeliculas();
         }
@@ -343,12 +355,12 @@ namespace Interfaz.ServicioDeVideoclub {
             return base.Channel.DevuelvePeliculasAsync();
         }
         
-        public Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasNovedades() {
-            return base.Channel.DevuelvePeliculasNovedades();
+        public Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorDias(int dias) {
+            return base.Channel.DevuelvePeliculasPorDias(dias);
         }
         
-        public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasNovedadesAsync() {
-            return base.Channel.DevuelvePeliculasNovedadesAsync();
+        public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorDiasAsync(int dias) {
+            return base.Channel.DevuelvePeliculasPorDiasAsync(dias);
         }
         
         public Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorGenero(string genero) {
@@ -357,6 +369,22 @@ namespace Interfaz.ServicioDeVideoclub {
         
         public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorGeneroAsync(string genero) {
             return base.Channel.DevuelvePeliculasPorGeneroAsync(genero);
+        }
+        
+        public Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasPorNombre(string nombre) {
+            return base.Channel.DevuelvePeliculasPorNombre(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorNombreAsync(string nombre) {
+            return base.Channel.DevuelvePeliculasPorNombreAsync(nombre);
+        }
+        
+        public string[] DevuelveTiposPeliculas() {
+            return base.Channel.DevuelveTiposPeliculas();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> DevuelveTiposPeliculasAsync() {
+            return base.Channel.DevuelveTiposPeliculasAsync();
         }
     }
 }

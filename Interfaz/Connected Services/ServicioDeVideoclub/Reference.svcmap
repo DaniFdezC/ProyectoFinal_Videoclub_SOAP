@@ -22,10 +22,11 @@
     <MetadataSource Address="http://localhost:55931/VideoclubServicio.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="VideoclubServicio2.xsd" MetadataType="Schema" ID="46842418-3919-419a-84f5-10daac2c4a36" SourceId="1" SourceUrl="http://localhost:55931/VideoclubServicio.svc?xsd=xsd2" />
+    <MetadataFile FileName="VideoclubServicio3.xsd" MetadataType="Schema" ID="58ddf7f7-2f7a-49a2-a58e-041f4064cdfe" SourceId="1" SourceUrl="http://localhost:55931/VideoclubServicio.svc?xsd=xsd3" />
     <MetadataFile FileName="VideoclubServicio.wsdl" MetadataType="Wsdl" ID="21a07ba9-ac14-41bf-a24d-1279cc5ad54f" SourceId="1" SourceUrl="http://localhost:55931/VideoclubServicio.svc?wsdl" />
     <MetadataFile FileName="VideoclubServicio.xsd" MetadataType="Schema" ID="bdf9c27f-e36b-4e84-861d-700fc3161d57" SourceId="1" SourceUrl="http://localhost:55931/VideoclubServicio.svc?xsd=xsd0" />
     <MetadataFile FileName="VideoclubServicio1.xsd" MetadataType="Schema" ID="4f697520-ac31-4d59-bde2-458058d0f293" SourceId="1" SourceUrl="http://localhost:55931/VideoclubServicio.svc?xsd=xsd1" />
-    <MetadataFile FileName="VideoclubServicio2.xsd" MetadataType="Schema" ID="46842418-3919-419a-84f5-10daac2c4a36" SourceId="1" SourceUrl="http://localhost:55931/VideoclubServicio.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

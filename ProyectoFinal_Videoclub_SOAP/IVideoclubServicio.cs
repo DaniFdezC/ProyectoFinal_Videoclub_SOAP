@@ -16,24 +16,33 @@ namespace ServicioVideoClub {
         Task<bool> AnadeCliente(string nombre, string apellido, string direccion, string dni);
 
         [OperationContract]
-        void EliminarCliente(Cliente cliente);
+        Task<bool> AnadePelicula(string nombre, string genero, DateTime fecha);
+
 
         [OperationContract]
-        void EliminarPelicula(Pelicula pelicula);
+        Task<bool> EliminarCliente(Cliente cliente);
+
+        [OperationContract]
+        Task<bool> EliminarPelicula(Pelicula pelicula);
+
 
         [OperationContract]
         Cliente[] DevuelveClientes();
 
         [OperationContract]
-        Task<bool> AnadePelicula(string nombre, string genero, DateTime fecha);
-
-        [OperationContract]
         Pelicula[] DevuelvePeliculas();
 
+
         [OperationContract]
-        Pelicula[] DevuelvePeliculasNovedades();
+        Pelicula[] DevuelvePeliculasPorDias(int dias);
 
         [OperationContract]
         Pelicula[] DevuelvePeliculasPorGenero(string genero);
+
+        [OperationContract]
+        Pelicula[] DevuelvePeliculasPorNombre(string nombre);
+
+        [OperationContract]
+        string[] DevuelveTiposPeliculas();
     }
 }

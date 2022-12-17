@@ -16,64 +16,50 @@ namespace ServicioVideoClub {
         public Task<bool> AnadeCliente(string nombre, string apellido, string direccion, string dni) {
             return videoclub.AnadeCliente(nombre, apellido, direccion, dni);
         }
-
-        public void EliminarCliente(Cliente clienteAEliminar) {
-            ClienteNegocio clienteMapeado = ConversorClases.ConversorClienteANegocio(clienteAEliminar);
-            videoclub.EliminarCliente(clienteMapeado);
-        }
-
-        public void EliminarPelicula(Pelicula peliculaAEliminar) {
-            PeliculaNegocio peliculaMapeada = ConversorClases.ConversorPeliculaANegocio(peliculaAEliminar);
-            videoclub.EliminarPelicula(peliculaMapeada);
-        }
-        public Cliente[] DevuelveClientes() {
-            List<Cliente> clientesMapeados = new List<Cliente>();
-            ClienteNegocio[] clientesSinMapear = videoclub.DevuelveClientes();
-
-            foreach(ClienteNegocio clNegocio in clientesSinMapear) {
-                clientesMapeados.Add(ConversorClases.ConversorClienteAServidor(clNegocio));
-            }
-
-            return clientesMapeados.ToArray();
-        }
-
-        public Pelicula[] DevuelvePeliculas() {
-            List<Pelicula> peliculasMapeadas = new List<Pelicula>();
-            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculas();
-
-            foreach (PeliculaNegocio peliNegocio in peliculasSinMapear) {
-                peliculasMapeadas.Add(ConversorClases.ConversorPeliculaAServidor(peliNegocio));
-            }
-
-            return peliculasMapeadas.ToArray();
-        }
-
-        public Pelicula[] DevuelvePeliculasNovedades() {
-            List<Pelicula> peliculasMapeadas = new List<Pelicula>();
-            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasNovedades();
-
-            foreach (PeliculaNegocio peliNegocio in peliculasSinMapear) {
-                peliculasMapeadas.Add(ConversorClases.ConversorPeliculaAServidor(peliNegocio));
-            }
-
-            return peliculasMapeadas.ToArray();
-        }
-
-        public Pelicula[] DevuelvePeliculasPorGenero(string genero) {
-            List<Pelicula> peliculasMapeadas = new List<Pelicula>();
-            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasPorGenero(genero);
-
-            foreach (PeliculaNegocio peliNegocio in peliculasSinMapear) {
-                peliculasMapeadas.Add(ConversorClases.ConversorPeliculaAServidor(peliNegocio));
-            }
-
-            return peliculasMapeadas.ToArray();
-        }
-
-
         public Task<bool> AnadePelicula(string titulo, string genero, DateTime fecha) {
             return videoclub.AnadePelicula(titulo, genero, fecha);
         }
+
+        public Task<bool> EliminarCliente(Cliente clienteAEliminar) {
+            ClienteNegocio clienteMapeado = ConversorClases.ConversorClienteANegocio(clienteAEliminar);
+            return videoclub.EliminarCliente(clienteMapeado);
+        }
+        public Task<bool> EliminarPelicula(Pelicula peliculaAEliminar) {
+            PeliculaNegocio peliculaMapeada = ConversorClases.ConversorPeliculaANegocio(peliculaAEliminar);
+            return videoclub.EliminarPelicula(peliculaMapeada);
+        }
+
+        public Cliente[] DevuelveClientes() {
+            ClienteNegocio[] clientesSinMapear = videoclub.DevuelveClientes();
+            return ConversorClases.ConversorClientesAServidor(clientesSinMapear);
+        }
+        public Pelicula[] DevuelvePeliculas() {
+            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculas();
+
+            return ConversorClases.ConversorPeliculasAServidor(peliculasSinMapear);
+        }
+
+        public Pelicula[] DevuelvePeliculasPorDias(int dias) {
+            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasPorDias(dias);
+
+            return ConversorClases.ConversorPeliculasAServidor(peliculasSinMapear);
+        }
+        public Pelicula[] DevuelvePeliculasPorGenero(string genero) {
+            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasPorGenero(genero);
+
+            return ConversorClases.ConversorPeliculasAServidor(peliculasSinMapear);
+
+        }
+        public Pelicula[] DevuelvePeliculasPorNombre(string nombre) {
+            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasPorNombre(nombre);
+
+            return ConversorClases.ConversorPeliculasAServidor(peliculasSinMapear);
+        }
+
+        public string[] DevuelveTiposPeliculas() {
+            return videoclub.TiposDePeliculas();
+        }
+        
 
 
     }
