@@ -15,33 +15,6 @@ namespace Interfaz {
     public partial class PeliculasForm : Form {
         ServicioDeVideoclub.VideoclubServicioClient vid;
 
-        private void ActivarPanelesMostrarPeliculas() {
-            PanelTablasPelis.Visible = true;
-            PnAnadirPelicula.Visible = false;
-            PanelBuscarIzda.Visible = false;
-            PanelEliminarIzda.Visible = false;
-        }
-
-        private void ActivarPanelesBuscarPeliculas() {
-            PanelTablasPelis.Visible = true;
-            PnAnadirPelicula.Visible = false;
-            PanelBuscarIzda.Visible = true;
-            PanelEliminarIzda.Visible = false;
-        }
-
-        private void ActivarPanelesEliminarPeliculas() {
-            PanelTablasPelis.Visible = true;
-            PnAnadirPelicula.Visible = false;
-            PanelBuscarIzda.Visible = false;
-            PanelEliminarIzda.Visible = true;
-        }
-
-        private void ActivarPanelAnadirPelicula() {
-            PanelTablasPelis.Visible = false;
-            PnAnadirPelicula.Visible = true;
-            PanelBuscarIzda.Visible = false;
-            PanelEliminarIzda.Visible = false;
-        }
         public PeliculasForm(ServicioDeVideoclub.VideoclubServicioClient vid) {
             InitializeComponent();
             this.vid = vid;
@@ -49,6 +22,7 @@ namespace Interfaz {
 
         private async void BtMostrarPeliculas_Click(object sender, EventArgs e) {
             ActivarPanelesMostrarPeliculas();
+
             ServicioDeVideoclub.Pelicula[] peliculas = await vid.DevuelvePeliculasAsync();
 
             DGVPelis.DataSource = peliculas;
@@ -57,6 +31,7 @@ namespace Interfaz {
 
         private void BtAnadirPelicula_Click(object sender, EventArgs e) {
             ActivarPanelAnadirPelicula();
+
             ComboBGeneros.DataSource = Generos.DevuelveGeneros();
         }
         private async void BtEnviarPeli_Click(object sender, EventArgs e) {
@@ -65,7 +40,7 @@ namespace Interfaz {
             DateTime fecha = DateTFechaADic.Value;
 
             string texto = await vid.AnadePeliculaAsync(titulo, genero, fecha) ?
-                "Se ha creado la pelicula con exito" : "No se ha podido crear la pelicula";
+                "Se ha creado la película conéexito" : "No se ha podido crear la película";
 
             MessageBox.Show(texto);
 
@@ -75,6 +50,7 @@ namespace Interfaz {
 
         private async void BtEliminaPelicula_Click(object sender, EventArgs e) {
             ActivarPanelesEliminarPeliculas();
+
             ServicioDeVideoclub.Pelicula[] peliculas = await vid.DevuelvePeliculasAsync();
 
             DGVPelis.DataSource = peliculas;
@@ -89,27 +65,16 @@ namespace Interfaz {
 
         private void BtBuscarPelicula_Click(object sender, EventArgs e) {
             ActivarPanelesBuscarPeliculas();
-            ControladorPaneles.DesactivarPanelBusqueda(PanelBuscarIzda.Controls);
+
             PanelBuscarIzda.Visible = true;
 
             CmbBuscarGenero.DataSource = Generos.DevuelveGeneros();
         }
 
-        ///^????????????????
-        /*private async void BtBuscarNovedades_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Pelicula[] novedades = await vid.DevuelvePeliculasNovedadesAsync();
-
-            if (novedades.Length == 0)
-                MessageBox.Show("No hay películas creadas hace menos de 7 días");
-            else
-                DGVPelis.DataSource = vid.DevuelvePeliculasNovedades();
-
-        }*/
-
         private async void BtBuscarPorGenero_Click(object sender, EventArgs e) {
             CmbBuscarGenero.DataSource = await vid.DevuelveTiposPeliculasAsync();
 
-            ControladorPaneles.ActivarPanelBusqueda(PanelPorGenero, PanelBuscarIzda.Controls);
+            ControladorPaneles.ActivarPanelDesactivarResto(PanelPorGenero, PanelBuscarIzda.Controls);
 
         }
         private async void BtEnviarPorGenero_Click(object sender, EventArgs e) {
@@ -123,7 +88,7 @@ namespace Interfaz {
         private void BtBuscarPorNombre_Click(object sender, EventArgs e) {
             TxNombrePeliculaBuscar.Text = "";
 
-            ControladorPaneles.ActivarPanelBusqueda(PanelPorNombre, PanelBuscarIzda.Controls);
+            ControladorPaneles.ActivarPanelDesactivarResto(PanelPorNombre, PanelBuscarIzda.Controls);
         }
         private async void BtEnviarPorNombre_Click(object sender, EventArgs e) {
             string titulo = TxNombrePeliculaBuscar.Text;
@@ -136,7 +101,7 @@ namespace Interfaz {
         private void BtBuscarPorDias_Click(object sender, EventArgs e) {
             NumericBuscarDias.Value = 1;
 
-            ControladorPaneles.ActivarPanelBusqueda(PanelPorDias, PanelBuscarIzda.Controls);
+            ControladorPaneles.ActivarPanelDesactivarResto(PanelPorDias, PanelBuscarIzda.Controls);
         }
         private async void BtEnviarPorDias_Click(object sender, EventArgs e) {
             int dias = (int)NumericBuscarDias.Value;
@@ -145,12 +110,33 @@ namespace Interfaz {
             ModificaTablaAMostrar(resultado);
         }
 
-
         private void ModificaTablaAMostrar(ServicioDeVideoclub.Pelicula[] peliculasMostrar) {
             if (peliculasMostrar.Length == 0)
                 MessageBox.Show("No hay películas que mostrar");
             else
                 DGVPelis.DataSource = peliculasMostrar;
+        }
+
+
+        private void ActivarPanelesMostrarPeliculas() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasPelis, PnAnadirPelicula);
+            ControladorPaneles.DesactivarPaneles(PanelBuscarIzda, PanelEliminarIzda);
+        }
+
+        private void ActivarPanelesBuscarPeliculas() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasPelis, PnAnadirPelicula);
+            ControladorPaneles.ActivarDesactivar(PanelBuscarIzda, PanelEliminarIzda);
+            ControladorPaneles.DesactivarTodosPaneles(PanelBuscarIzda.Controls);
+        }
+
+        private void ActivarPanelesEliminarPeliculas() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasPelis, PnAnadirPelicula);
+            ControladorPaneles.ActivarDesactivar(PanelEliminarIzda, PanelBuscarIzda);
+        }
+
+        private void ActivarPanelAnadirPelicula() {
+            ControladorPaneles.ActivarDesactivar(PnAnadirPelicula, PanelTablasPelis);
+            ControladorPaneles.DesactivarPaneles(PanelEliminarIzda, PanelBuscarIzda);
         }
 
     }

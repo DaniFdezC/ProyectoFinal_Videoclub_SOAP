@@ -8,17 +8,36 @@ using System.Windows.Forms;
 namespace Interfaz.Utiles {
     internal class ControladorPaneles {
 
-        internal static void ActivarPanelBusqueda(Panel panelActivar, Control.ControlCollection controls) {
+        internal static void ActivarPanelDesactivarResto(Panel panelActivar, Control.ControlCollection controls) {
             foreach (Control control in controls) {
+
                 if (control == panelActivar)
-                    control.Visible = true;
+                    ActivarPanel(control);
+
                 else if (control is Panel)
-                    control.Visible = false;
+                    DesactivarPanel(control);
             }
         }
 
-        internal static void DesactivarPanelBusqueda(Control.ControlCollection controls) {
-            ActivarPanelBusqueda(null, controls);
+        internal static void DesactivarTodosPaneles(Control.ControlCollection controls) {
+            ActivarPanelDesactivarResto(null, controls);
+        }
+
+        internal static void ActivarDesactivar(Control panelActivar, Control panelDesactivar) {
+            panelActivar.Visible = true;
+            panelDesactivar.Visible = false;
+        }
+        internal static void ActivarPanel(Control panel1) {
+            panel1.Visible = true;
+        }
+
+        internal static void DesactivarPanel(Control panel1) {
+            panel1.Visible = false;
+        }
+
+        internal static void DesactivarPaneles(Control panel1, Control panel2) {
+            DesactivarPanel(panel1);
+            DesactivarPanel(panel2);    
         }
     }
 }
