@@ -1,5 +1,4 @@
 ﻿using Interfaz.Utiles;
-using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +21,7 @@ namespace Interfaz {
             this.formularioPrincipal = formularioPrincipal;
         }
 
+        // Mostrar peliculas
         private async void BtMostrarPeliculas_Click(object sender, EventArgs e) {
             ActivarPanelesMostrarPeliculas();
 
@@ -30,11 +30,11 @@ namespace Interfaz {
             DGVPelis.DataSource = peliculas;
         }
 
-
-        private void BtAnadirPelicula_Click(object sender, EventArgs e) {
+        // Añadir peliculas
+        private async void BtAnadirPelicula_Click(object sender, EventArgs e) {
             ActivarPanelAnadirPelicula();
 
-            ComboBGeneros.DataSource = Generos.DevuelveGeneros();
+            ComboBGeneros.DataSource = await vid.DevuelveTiposPeliculasAsync();
         }
         private async void BtEnviarPeli_Click(object sender, EventArgs e) {
             string titulo = TxTitulo.Text;
@@ -49,7 +49,7 @@ namespace Interfaz {
             TxTitulo.Text = "";
         }
 
-
+        // Eliminar peliculas
         private async void BtEliminaPelicula_Click(object sender, EventArgs e) {
             ActivarPanelesEliminarPeliculas();
 
@@ -64,15 +64,16 @@ namespace Interfaz {
             DGVPelis.DataSource = vid.DevuelvePeliculas();
         }
 
-
-        private void BtBuscarPelicula_Click(object sender, EventArgs e) {
+        // Buscar peliculas
+        private async void BtBuscarPelicula_Click(object sender, EventArgs e) {
             ActivarPanelesBuscarPeliculas();
 
             PanelBuscarIzda.Visible = true;
 
-            CmbBuscarGenero.DataSource = Generos.DevuelveGeneros();
+            CmbBuscarGenero.DataSource = await vid.DevuelveTiposPeliculasAsync();
         }
 
+                // Genero
         private async void BtBuscarPorGenero_Click(object sender, EventArgs e) {
             CmbBuscarGenero.DataSource = await vid.DevuelveTiposPeliculasAsync();
 
@@ -86,7 +87,7 @@ namespace Interfaz {
             ModificaTablaAMostrar(resultado);
         }
 
-
+                // Nombre
         private void BtBuscarPorNombre_Click(object sender, EventArgs e) {
             TxNombrePeliculaBuscar.Text = "";
 
@@ -99,7 +100,7 @@ namespace Interfaz {
             ModificaTablaAMostrar(resultado);
         }
 
-
+                // Dias
         private void BtBuscarPorDias_Click(object sender, EventArgs e) {
             NumericBuscarDias.Value = 1;
 
@@ -112,6 +113,8 @@ namespace Interfaz {
             ModificaTablaAMostrar(resultado);
         }
 
+
+        // Extras
         private void ModificaTablaAMostrar(ServicioDeVideoclub.Pelicula[] peliculasMostrar) {
             if (peliculasMostrar.Length == 0)
                 MessageBox.Show("No hay películas que mostrar");
@@ -119,7 +122,15 @@ namespace Interfaz {
                 DGVPelis.DataSource = peliculasMostrar;
         }
 
+        // Formulario principal
 
+        private void BtVolver_Click(object sender, EventArgs e) {
+            formularioPrincipal.Show();
+            this.Close();
+        }
+
+
+        // Extras visuales para los paneles
         private void ActivarPanelesMostrarPeliculas() {
             ControladorPaneles.ActivarDesactivar(PanelTablasPelis, PnAnadirPelicula);
             ControladorPaneles.DesactivarPaneles(PanelBuscarIzda, PanelEliminarIzda);
@@ -141,10 +152,7 @@ namespace Interfaz {
             ControladorPaneles.DesactivarPaneles(PanelEliminarIzda, PanelBuscarIzda);
         }
 
-        private void BtVolver_Click(object sender, EventArgs e) {
-            formularioPrincipal.Show();
-            this.Close();
-        }
+
 
     }
 }

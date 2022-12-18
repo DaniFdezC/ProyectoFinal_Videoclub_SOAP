@@ -113,7 +113,7 @@
   <ItemGroup>
     <Compile Include="Alquiler.cs" />
     <Compile Include="Cliente.cs" />
-    <Compile Include="ConversorClases.cs" />
+    <Compile Include="MapeadorClases.cs" />
     <Compile Include="IVideoclubServicio.cs" />
     <Compile Include="Pelicula.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -85,8 +85,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utiles\ControladorPaneles.cs" />
-    <Compile Include="Utiles\ConvertidorATexto.cs" />
-    <Compile Include="Utiles\Generos.cs" />
     <EmbeddedResource Include="AlquilerForm.resx">
       <DependentUpon>AlquilerForm.cs</DependentUpon>
     </EmbeddedResource>

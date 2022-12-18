@@ -20,6 +20,15 @@ namespace ServicioVideoClub {
             return videoclub.AnadePelicula(titulo, genero, fecha);
         }
 
+
+        public Task<bool> AlquilaPelicula(Cliente cliente, Pelicula pelicula, DateTime fecha) {
+            ClienteNegocio clienteMapeado = MapeadorClases.ConversorClienteANegocio(cliente);
+            PeliculaNegocio peliculaMapeada = MapeadorClases.ConversorPeliculaANegocio(pelicula);
+
+            return videoclub.AlquilarPelicula(clienteMapeado, peliculaMapeada, fecha);
+        }
+
+
         public Task<bool> EliminarCliente(Cliente clienteAEliminar) {
             ClienteNegocio clienteMapeado = MapeadorClases.ConversorClienteANegocio(clienteAEliminar);
             return videoclub.EliminarCliente(clienteMapeado);
@@ -28,6 +37,7 @@ namespace ServicioVideoClub {
             PeliculaNegocio peliculaMapeada = MapeadorClases.ConversorPeliculaANegocio(peliculaAEliminar);
             return videoclub.EliminarPelicula(peliculaMapeada);
         }
+
 
         public Cliente[] DevuelveClientes() {
             ClienteNegocio[] clientesSinMapear = videoclub.DevuelveClientes();
@@ -38,6 +48,7 @@ namespace ServicioVideoClub {
 
             return MapeadorClases.ConversorPeliculasAServidor(peliculasSinMapear);
         }
+
 
         public Pelicula[] DevuelvePeliculasPorDias(int dias) {
             PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasPorDias(dias);
@@ -56,33 +67,24 @@ namespace ServicioVideoClub {
             return MapeadorClases.ConversorPeliculasAServidor(peliculasSinMapear);
         }
 
-        public Pelicula[] DevuelvePeliculasSinAlquilar() {
-            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasSinAlquilar();
 
-            return MapeadorClases.ConversorPeliculasAServidor(peliculasSinMapear);
-        }
         public Cliente[] DevuelveClientesPorNombre(string nombre) {
             ClienteNegocio[] clientesSinMapear = videoclub.DevuelveClientesPorNombre(nombre);
 
             return MapeadorClases.ConversorClientesAServidor(clientesSinMapear);
         }
 
-        public Task<bool> AlquilaPelicula(Cliente cliente, Pelicula pelicula, DateTime fecha) {
-            ClienteNegocio clienteMapeado = MapeadorClases.ConversorClienteANegocio(cliente);
-            PeliculaNegocio peliculaMapeada = MapeadorClases.ConversorPeliculaANegocio(pelicula);
+        public Pelicula[] DevuelvePeliculasSinAlquilar() {
+            PeliculaNegocio[] peliculasSinMapear = videoclub.DevuelvePeliculasSinAlquilar();
 
-            return videoclub.AlquilarPelicula(clienteMapeado, peliculaMapeada, fecha);
+            return MapeadorClases.ConversorPeliculasAServidor(peliculasSinMapear);
         }
-
         public Task<bool> FinalizarAlquilerPelicula(Alquiler alquiler) {
             AlquilerNegocio alquilerMapeado = MapeadorClases.ConversorAlquilerANegocio(alquiler);
 
             return videoclub.FinalizarAlquilerPelicula(alquilerMapeado);
         }
 
-        public void IniciarPrimeraConexion() {
-            videoclub.IniciarPrimeraConexion();
-        }
 
         public Alquiler[] DevuelveAlquilerPorNombre(string nombre) {
             AlquilerNegocio[] alquileresSinMapear = videoclub.DevuelveAlquilerPorNombre(nombre);
@@ -93,8 +95,10 @@ namespace ServicioVideoClub {
         public string[] DevuelveTiposPeliculas() {
             return videoclub.TiposDePeliculas();
         }
-        
 
+        public void IniciarPrimeraConexion() {
+            videoclub.IniciarPrimeraConexion();
+        }
 
     }
 }

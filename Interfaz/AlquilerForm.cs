@@ -1,5 +1,4 @@
 ﻿using Interfaz.Utiles;
-using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,25 +18,12 @@ namespace Interfaz {
             this.vid = vid;
             this.formularioPrincipal = formularioPrincipal;
 
+            // Los cargamos nada más iniciar el formulario para que no queden huecos vacíos
             DGVPelis.DataSource = vid.DevuelvePeliculasSinAlquilar();
             DGVClientes.DataSource = vid.DevuelveClientes();
         }
 
-        private void MuestraClientesPeliculas() {
-            ControladorPaneles.ActivarDesactivar(P1_2_Centro_ClientesPeliculas, P1_1_Centro_Alquileres);
-        }
-
-        private void MuestraAlquileres() {
-            ControladorPaneles.ActivarDesactivar(P1_1_Centro_Alquileres, P1_2_Centro_ClientesPeliculas);
-
-        }
-
-        private void EscondePanelesBusquedas() {
-            ControladorPaneles.DesactivarPaneles(P2_1_BuscarAlquiler, P2_2_BuscarPeliculaNombre, P2_3_BuscarClienteNombre);
-        }
-
-
-
+        // Mostrar clientes y peliculas
         private async void BtMostrarPeliculas_Click(object sender, EventArgs e) {
             MuestraClientesPeliculas();
             EscondePanelesBusquedas();
@@ -56,7 +42,9 @@ namespace Interfaz {
             DGVClientes.DataSource = clientes;
         }
 
+        // Buscar cliente
         private void BtBuscarCliente_Click(object sender, EventArgs e) {
+            MuestraClientesPeliculas();
             ControladorPaneles.ActivarPanelDesactivarResto(P2_3_BuscarClienteNombre, P2_Izquierda.Controls);
         }
 
@@ -70,7 +58,9 @@ namespace Interfaz {
             TxNombreClienteBuscar.Text = "";
         }
 
+        // Buscar pelicula
         private void BtBuscarPelicula_Click(object sender, EventArgs e) {
+            MuestraClientesPeliculas();
             ControladorPaneles.ActivarPanelDesactivarResto(P2_2_BuscarPeliculaNombre, P2_Izquierda.Controls);
         }
 
@@ -84,6 +74,7 @@ namespace Interfaz {
             TxNombrePeliculaBuscar.Text = "";
         }
 
+        // Mostrar alquileres
         private void BtMostrarAlquileresCliente_Click(object sender, EventArgs e) {
             MuestraAlquileres();
             ControladorPaneles.ActivarPanelDesactivarResto(P2_1_BuscarAlquiler, P2_Izquierda.Controls);
@@ -100,21 +91,19 @@ namespace Interfaz {
             TxNombreClienteAlquilerBuscar.Text = "";
         }
 
+        // Alquilar y devolver
         private async void BtAlquilar_Click(object sender, EventArgs e) {
-            if (DGVAlquileres == null || DGVPelis == null) {
-                MessageBox.Show("Debes seleccionar primero película y clientes");
-            } else {
-                ServicioDeVideoclub.Cliente clienteAlquilar = (ServicioDeVideoclub.Cliente)DGVClientes.SelectedRows[0].DataBoundItem;
-                ServicioDeVideoclub.Pelicula peliculaAlquilar = (ServicioDeVideoclub.Pelicula)DGVPelis.SelectedRows[0].DataBoundItem;
+            ServicioDeVideoclub.Cliente clienteAlquilar = (ServicioDeVideoclub.Cliente)DGVClientes.SelectedRows[0].DataBoundItem;
+            ServicioDeVideoclub.Pelicula peliculaAlquilar = (ServicioDeVideoclub.Pelicula)DGVPelis.SelectedRows[0].DataBoundItem;
 
-                DateTime fecha = DateTFechaAlquilar.Value;
-                string texto = await vid.AlquilaPeliculaAsync(clienteAlquilar, peliculaAlquilar, fecha) ?
-                    "Se ha registrado el alquiler con éxito" : "No se ha podido registrar el alquiler";
+            DateTime fecha = DateTFechaAlquilar.Value;
+            string texto = await vid.AlquilaPeliculaAsync(clienteAlquilar, peliculaAlquilar, fecha) ?
+                "Se ha registrado el alquiler con éxito" : "No se ha podido registrar el alquiler";
 
-                MessageBox.Show(texto);
+            MessageBox.Show(texto);
 
-                DGVPelis.DataSource = await vid.DevuelvePeliculasSinAlquilarAsync();
-            }
+            DGVPelis.DataSource = await vid.DevuelvePeliculasSinAlquilarAsync();
+            
         }
 
         private async void BtDevolver_Click(object sender, EventArgs e) {
@@ -127,9 +116,25 @@ namespace Interfaz {
 
         }
 
+        // Formulario principal
         private void BtVolver_Click(object sender, EventArgs e) {
             formularioPrincipal.Show();
             this.Close();
+        }
+
+
+        // Extras visuales para los paneles
+        private void MuestraClientesPeliculas() {
+            ControladorPaneles.ActivarDesactivar(P1_2_Centro_ClientesPeliculas, P1_1_Centro_Alquileres);
+        }
+
+        private void MuestraAlquileres() {
+            ControladorPaneles.ActivarDesactivar(P1_1_Centro_Alquileres, P1_2_Centro_ClientesPeliculas);
+
+        }
+
+        private void EscondePanelesBusquedas() {
+            ControladorPaneles.DesactivarPaneles(P2_1_BuscarAlquiler, P2_2_BuscarPeliculaNombre, P2_3_BuscarClienteNombre);
         }
 
     }

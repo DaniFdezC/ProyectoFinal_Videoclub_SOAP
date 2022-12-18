@@ -42,10 +42,6 @@
             this.BtMostrarClientes = new System.Windows.Forms.Button();
             this.BtMostrarPeliculas = new System.Windows.Forms.Button();
             this.P1_Derecha = new System.Windows.Forms.Panel();
-            this.P1_1_Centro_Alquileres = new System.Windows.Forms.Panel();
-            this.BtDevolver = new System.Windows.Forms.Button();
-            this.DGVAlquileres = new System.Windows.Forms.DataGridView();
-            this.LblAlquileres = new System.Windows.Forms.Label();
             this.P1_2_Centro_ClientesPeliculas = new System.Windows.Forms.Panel();
             this.DateTFechaAlquilar = new System.Windows.Forms.DateTimePicker();
             this.BtAlquilar = new System.Windows.Forms.Button();
@@ -53,17 +49,21 @@
             this.LblPelis = new System.Windows.Forms.Label();
             this.DGVClientes = new System.Windows.Forms.DataGridView();
             this.LblClientes = new System.Windows.Forms.Label();
+            this.P1_1_Centro_Alquileres = new System.Windows.Forms.Panel();
+            this.BtDevolver = new System.Windows.Forms.Button();
+            this.DGVAlquileres = new System.Windows.Forms.DataGridView();
+            this.LblAlquileres = new System.Windows.Forms.Label();
             this.P3_Arriba.SuspendLayout();
             this.P2_Izquierda.SuspendLayout();
             this.P2_1_BuscarAlquiler.SuspendLayout();
             this.P2_2_BuscarPeliculaNombre.SuspendLayout();
             this.P2_3_BuscarClienteNombre.SuspendLayout();
             this.P1_Derecha.SuspendLayout();
-            this.P1_1_Centro_Alquileres.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVAlquileres)).BeginInit();
             this.P1_2_Centro_ClientesPeliculas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPelis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVClientes)).BeginInit();
+            this.P1_1_Centro_Alquileres.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVAlquileres)).BeginInit();
             this.SuspendLayout();
             // 
             // P3_Arriba
@@ -341,69 +341,6 @@
             this.P1_Derecha.Size = new System.Drawing.Size(840, 607);
             this.P1_Derecha.TabIndex = 32;
             // 
-            // P1_1_Centro_Alquileres
-            // 
-            this.P1_1_Centro_Alquileres.Controls.Add(this.BtDevolver);
-            this.P1_1_Centro_Alquileres.Controls.Add(this.DGVAlquileres);
-            this.P1_1_Centro_Alquileres.Controls.Add(this.LblAlquileres);
-            this.P1_1_Centro_Alquileres.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.P1_1_Centro_Alquileres.Location = new System.Drawing.Point(0, 0);
-            this.P1_1_Centro_Alquileres.Name = "P1_1_Centro_Alquileres";
-            this.P1_1_Centro_Alquileres.Padding = new System.Windows.Forms.Padding(20, 5, 60, 0);
-            this.P1_1_Centro_Alquileres.Size = new System.Drawing.Size(840, 607);
-            this.P1_1_Centro_Alquileres.TabIndex = 25;
-            this.P1_1_Centro_Alquileres.Visible = false;
-            // 
-            // BtDevolver
-            // 
-            this.BtDevolver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtDevolver.FlatAppearance.BorderSize = 0;
-            this.BtDevolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtDevolver.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtDevolver.ForeColor = System.Drawing.Color.White;
-            this.BtDevolver.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtDevolver.Location = new System.Drawing.Point(25, 499);
-            this.BtDevolver.Name = "BtDevolver";
-            this.BtDevolver.Size = new System.Drawing.Size(117, 55);
-            this.BtDevolver.TabIndex = 29;
-            this.BtDevolver.Text = "Devolver";
-            this.BtDevolver.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtDevolver.UseVisualStyleBackColor = true;
-            this.BtDevolver.Click += new System.EventHandler(this.BtDevolver_Click);
-            // 
-            // DGVAlquileres
-            // 
-            this.DGVAlquileres.AllowUserToAddRows = false;
-            this.DGVAlquileres.AllowUserToDeleteRows = false;
-            this.DGVAlquileres.AllowUserToOrderColumns = true;
-            this.DGVAlquileres.AllowUserToResizeRows = false;
-            this.DGVAlquileres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DGVAlquileres.BackgroundColor = System.Drawing.Color.Plum;
-            this.DGVAlquileres.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DGVAlquileres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVAlquileres.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DGVAlquileres.Location = new System.Drawing.Point(20, 33);
-            this.DGVAlquileres.Name = "DGVAlquileres";
-            this.DGVAlquileres.ReadOnly = true;
-            this.DGVAlquileres.RowHeadersVisible = false;
-            this.DGVAlquileres.RowHeadersWidth = 51;
-            this.DGVAlquileres.RowTemplate.Height = 24;
-            this.DGVAlquileres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVAlquileres.Size = new System.Drawing.Size(760, 335);
-            this.DGVAlquileres.TabIndex = 3;
-            // 
-            // LblAlquileres
-            // 
-            this.LblAlquileres.AutoSize = true;
-            this.LblAlquileres.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LblAlquileres.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAlquileres.Location = new System.Drawing.Point(20, 5);
-            this.LblAlquileres.Name = "LblAlquileres";
-            this.LblAlquileres.Size = new System.Drawing.Size(122, 28);
-            this.LblAlquileres.TabIndex = 8;
-            this.LblAlquileres.Text = "Alquileres";
-            this.LblAlquileres.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // P1_2_Centro_ClientesPeliculas
             // 
             this.P1_2_Centro_ClientesPeliculas.Controls.Add(this.DateTFechaAlquilar);
@@ -510,6 +447,69 @@
             this.LblClientes.Text = "Clientes";
             this.LblClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // P1_1_Centro_Alquileres
+            // 
+            this.P1_1_Centro_Alquileres.Controls.Add(this.BtDevolver);
+            this.P1_1_Centro_Alquileres.Controls.Add(this.DGVAlquileres);
+            this.P1_1_Centro_Alquileres.Controls.Add(this.LblAlquileres);
+            this.P1_1_Centro_Alquileres.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.P1_1_Centro_Alquileres.Location = new System.Drawing.Point(0, 0);
+            this.P1_1_Centro_Alquileres.Name = "P1_1_Centro_Alquileres";
+            this.P1_1_Centro_Alquileres.Padding = new System.Windows.Forms.Padding(20, 5, 60, 0);
+            this.P1_1_Centro_Alquileres.Size = new System.Drawing.Size(840, 607);
+            this.P1_1_Centro_Alquileres.TabIndex = 25;
+            this.P1_1_Centro_Alquileres.Visible = false;
+            // 
+            // BtDevolver
+            // 
+            this.BtDevolver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtDevolver.FlatAppearance.BorderSize = 0;
+            this.BtDevolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtDevolver.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtDevolver.ForeColor = System.Drawing.Color.White;
+            this.BtDevolver.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtDevolver.Location = new System.Drawing.Point(25, 499);
+            this.BtDevolver.Name = "BtDevolver";
+            this.BtDevolver.Size = new System.Drawing.Size(117, 55);
+            this.BtDevolver.TabIndex = 29;
+            this.BtDevolver.Text = "Devolver";
+            this.BtDevolver.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtDevolver.UseVisualStyleBackColor = true;
+            this.BtDevolver.Click += new System.EventHandler(this.BtDevolver_Click);
+            // 
+            // DGVAlquileres
+            // 
+            this.DGVAlquileres.AllowUserToAddRows = false;
+            this.DGVAlquileres.AllowUserToDeleteRows = false;
+            this.DGVAlquileres.AllowUserToOrderColumns = true;
+            this.DGVAlquileres.AllowUserToResizeRows = false;
+            this.DGVAlquileres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DGVAlquileres.BackgroundColor = System.Drawing.Color.Plum;
+            this.DGVAlquileres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DGVAlquileres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVAlquileres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DGVAlquileres.Location = new System.Drawing.Point(20, 33);
+            this.DGVAlquileres.Name = "DGVAlquileres";
+            this.DGVAlquileres.ReadOnly = true;
+            this.DGVAlquileres.RowHeadersVisible = false;
+            this.DGVAlquileres.RowHeadersWidth = 51;
+            this.DGVAlquileres.RowTemplate.Height = 24;
+            this.DGVAlquileres.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVAlquileres.Size = new System.Drawing.Size(760, 335);
+            this.DGVAlquileres.TabIndex = 3;
+            // 
+            // LblAlquileres
+            // 
+            this.LblAlquileres.AutoSize = true;
+            this.LblAlquileres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LblAlquileres.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAlquileres.Location = new System.Drawing.Point(20, 5);
+            this.LblAlquileres.Name = "LblAlquileres";
+            this.LblAlquileres.Size = new System.Drawing.Size(122, 28);
+            this.LblAlquileres.TabIndex = 8;
+            this.LblAlquileres.Text = "Alquileres";
+            this.LblAlquileres.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // AlquilerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -533,13 +533,13 @@
             this.P2_3_BuscarClienteNombre.ResumeLayout(false);
             this.P2_3_BuscarClienteNombre.PerformLayout();
             this.P1_Derecha.ResumeLayout(false);
-            this.P1_1_Centro_Alquileres.ResumeLayout(false);
-            this.P1_1_Centro_Alquileres.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVAlquileres)).EndInit();
             this.P1_2_Centro_ClientesPeliculas.ResumeLayout(false);
             this.P1_2_Centro_ClientesPeliculas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPelis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVClientes)).EndInit();
+            this.P1_1_Centro_Alquileres.ResumeLayout(false);
+            this.P1_1_Centro_Alquileres.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVAlquileres)).EndInit();
             this.ResumeLayout(false);
 
         }

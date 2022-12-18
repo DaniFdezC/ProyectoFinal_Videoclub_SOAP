@@ -20,6 +20,7 @@ namespace Interfaz {
             this.formularioPrincipal = formularioPrincipal;
         }
 
+        // Mostrar clientes
         private async void BtMostrarClientes_Click(object sender, EventArgs e) {
             ActivarPanelesMostrarClientes();
 
@@ -28,18 +29,9 @@ namespace Interfaz {
             DGVClientes.DataSource = clientes;
         }
 
-        private void ActivarPanelesMostrarClientes() {
-            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
-            ControladorPaneles.DesactivarPaneles(PanelBuscarIzda, PanelEliminarIzda);
-        }
-
+        // Añadir clientes
         private void BtAnadirCliente_Click(object sender, EventArgs e) {
-            ActivarPanelAnadirPelicula();
-        }
-
-        private void ActivarPanelAnadirPelicula() {
-            ControladorPaneles.ActivarDesactivar(PnAnadirCliente, PanelTablasClientes);
-            ControladorPaneles.DesactivarPaneles(PanelEliminarIzda, PanelBuscarIzda);
+            ActivarPanelAnadirCliente();
         }
 
         private async void BtEnviarCliente_Click(object sender, EventArgs e) {
@@ -56,29 +48,30 @@ namespace Interfaz {
             ReseteaTextBoxAnadir();
         }
 
-        private void ReseteaTextBoxAnadir() {
-            TxNombre.Text = "";
-            TxApellidos.Text = "";
-            TxDireccion.Text = "";
-            TxDNI.Text = "";
-        }
 
+        // Eliminar clientes
         private void BtEliminaCliente_Click(object sender, EventArgs e) {
             ActivarPanelesEliminarClientes();
         }
 
-        private void ActivarPanelesEliminarClientes() {
-            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
-            ControladorPaneles.ActivarDesactivar(PanelEliminarIzda, PanelBuscarIzda);
+        private async void BtEnviarEliminar_Click(object sender, EventArgs e) {
+            ServicioDeVideoclub.Cliente clienteAEliminar = (ServicioDeVideoclub.Cliente)DGVClientes.SelectedRows[0].DataBoundItem;
+            bool eliminado = await vid.EliminarClienteAsync(clienteAEliminar);
+
+            string mensaje;
+            if (eliminado)
+                mensaje = $"El cliente {clienteAEliminar.Nombre} {clienteAEliminar.Apellido} ha sido eliminado con exito";
+            else
+                mensaje = "No se ha podido eliminar el cliente";
+
+            MessageBox.Show(mensaje);
+
+            DGVClientes.DataSource = await vid.DevuelveClientesAsync();
         }
 
+        // Buscar clientes
         private void BtBuscarCliente_Click(object sender, EventArgs e) {
             ActivarPanelesBuscarClientes();
-        }
-
-        private void ActivarPanelesBuscarClientes() {
-            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
-            ControladorPaneles.ActivarDesactivar(PanelBuscarIzda, PanelEliminarIzda);
         }
 
         private void BtBuscarPorNombre_Click(object sender, EventArgs e) {
@@ -95,6 +88,20 @@ namespace Interfaz {
             ModificaTablaAMostrar(resultado);
         }
 
+        // Formulario principal
+        private void BtVolver_Click(object sender, EventArgs e) {
+            formularioPrincipal.Show();
+            this.Close();
+        }
+
+        // Extras
+        private void ReseteaTextBoxAnadir() {
+            TxNombre.Text = "";
+            TxApellidos.Text = "";
+            TxDireccion.Text = "";
+            TxDNI.Text = "";
+        }
+
         private void ModificaTablaAMostrar(ServicioDeVideoclub.Cliente[] clientesMostrar) {
             if (clientesMostrar.Length == 0)
                 MessageBox.Show("No hay clientes que mostrar");
@@ -102,24 +109,26 @@ namespace Interfaz {
                 DGVClientes.DataSource = clientesMostrar;
         }
 
-        private async void BtEnviarEliminar_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Cliente clienteAEliminar = (ServicioDeVideoclub.Cliente)DGVClientes.SelectedRows[0].DataBoundItem;
-            bool eliminado = await vid.EliminarClienteAsync(clienteAEliminar);
 
-            string mensaje;
-            if(eliminado) 
-                mensaje = $"El cliente {clienteAEliminar.Nombre} {clienteAEliminar.Apellido} ha sido eliminado con exito";
-            else
-                mensaje = "No se ha podido eliminar el cliente";
-
-            MessageBox.Show(mensaje);
-
-            DGVClientes.DataSource = await vid.DevuelveClientesAsync();
+        // Extras visuales para los paneles
+        private void ActivarPanelesMostrarClientes() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
+            ControladorPaneles.DesactivarPaneles(PanelBuscarIzda, PanelEliminarIzda);
         }
 
-        private void BtVolver_Click(object sender, EventArgs e) {
-            formularioPrincipal.Show();
-            this.Close();
+        private void ActivarPanelAnadirCliente() {
+            ControladorPaneles.ActivarDesactivar(PnAnadirCliente, PanelTablasClientes);
+            ControladorPaneles.DesactivarPaneles(PanelEliminarIzda, PanelBuscarIzda);
+        }
+
+        private void ActivarPanelesEliminarClientes() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
+            ControladorPaneles.ActivarDesactivar(PanelEliminarIzda, PanelBuscarIzda);
+        }
+
+        private void ActivarPanelesBuscarClientes() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
+            ControladorPaneles.ActivarDesactivar(PanelBuscarIzda, PanelEliminarIzda);
         }
     }
 }

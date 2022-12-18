@@ -28,9 +28,6 @@ namespace ServicioVideoClub {
         Task<bool> EliminarPelicula(Pelicula pelicula);
 
         [OperationContract]
-        void IniciarPrimeraConexion();
-
-        [OperationContract]
         Cliente[] DevuelveClientes();
 
         [OperationContract]
@@ -60,5 +57,8 @@ namespace ServicioVideoClub {
 
         [OperationContract]
         string[] DevuelveTiposPeliculas();
+
+        [OperationContract]
+        void IniciarPrimeraConexion();
     }
 }

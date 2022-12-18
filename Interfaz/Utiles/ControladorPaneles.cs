@@ -8,6 +8,8 @@ using System.Windows.Forms;
 namespace Interfaz.Utiles {
     internal class ControladorPaneles {
 
+        // Todas las funciones son simplemente para jugar con la visual de los formularios, escondiendo o mostrando paneles
+
         internal static void ActivarPanelDesactivarResto(Panel panelActivar, Control.ControlCollection controls) {
             foreach (Control control in controls) {
 
@@ -27,6 +29,7 @@ namespace Interfaz.Utiles {
             panelActivar.Visible = true;
             panelDesactivar.Visible = false;
         }
+
         internal static void ActivarPanel(Control panel1) {
             panel1.Visible = true;
         }
@@ -39,6 +42,7 @@ namespace Interfaz.Utiles {
             DesactivarPanel(panel1);
             DesactivarPanel(panel2);    
         }
+
         internal static void DesactivarPaneles(Control panel1, Control panel2, Control panel3) {
             DesactivarPanel(panel1);
             DesactivarPanel(panel2);
