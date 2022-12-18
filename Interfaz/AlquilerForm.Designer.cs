@@ -333,8 +333,8 @@
             // P1_Derecha
             // 
             this.P1_Derecha.BackColor = System.Drawing.Color.Plum;
-            this.P1_Derecha.Controls.Add(this.P1_1_Centro_Alquileres);
             this.P1_Derecha.Controls.Add(this.P1_2_Centro_ClientesPeliculas);
+            this.P1_Derecha.Controls.Add(this.P1_1_Centro_Alquileres);
             this.P1_Derecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.P1_Derecha.Location = new System.Drawing.Point(342, 46);
             this.P1_Derecha.Name = "P1_Derecha";
@@ -422,7 +422,7 @@
             // DateTFechaAlquilar
             // 
             this.DateTFechaAlquilar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateTFechaAlquilar.Location = new System.Drawing.Point(136, 508);
+            this.DateTFechaAlquilar.Location = new System.Drawing.Point(134, 560);
             this.DateTFechaAlquilar.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             this.DateTFechaAlquilar.Name = "DateTFechaAlquilar";
             this.DateTFechaAlquilar.Size = new System.Drawing.Size(400, 30);
@@ -436,7 +436,7 @@
             this.BtAlquilar.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtAlquilar.ForeColor = System.Drawing.Color.White;
             this.BtAlquilar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtAlquilar.Location = new System.Drawing.Point(25, 499);
+            this.BtAlquilar.Location = new System.Drawing.Point(23, 540);
             this.BtAlquilar.Name = "BtAlquilar";
             this.BtAlquilar.Size = new System.Drawing.Size(105, 55);
             this.BtAlquilar.TabIndex = 28;
@@ -455,7 +455,7 @@
             this.DGVPelis.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVPelis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVPelis.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DGVPelis.Location = new System.Drawing.Point(20, 277);
+            this.DGVPelis.Location = new System.Drawing.Point(20, 297);
             this.DGVPelis.Name = "DGVPelis";
             this.DGVPelis.ReadOnly = true;
             this.DGVPelis.RowHeadersVisible = false;
@@ -472,7 +472,8 @@
             this.LblPelis.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPelis.Location = new System.Drawing.Point(20, 249);
             this.LblPelis.Name = "LblPelis";
-            this.LblPelis.Size = new System.Drawing.Size(110, 28);
+            this.LblPelis.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.LblPelis.Size = new System.Drawing.Size(110, 48);
             this.LblPelis.TabIndex = 8;
             this.LblPelis.Text = "Películas";
             this.LblPelis.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

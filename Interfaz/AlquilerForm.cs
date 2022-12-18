@@ -18,6 +18,9 @@ namespace Interfaz {
             InitializeComponent();
             this.vid = vid;
             this.formularioPrincipal = formularioPrincipal;
+
+            DGVPelis.DataSource = vid.DevuelvePeliculasSinAlquilar();
+            DGVClientes.DataSource = vid.DevuelveClientes();
         }
 
         private void MuestraClientesPeliculas() {
@@ -98,17 +101,20 @@ namespace Interfaz {
         }
 
         private async void BtAlquilar_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Cliente clienteAlquilar = (ServicioDeVideoclub.Cliente)DGVClientes.SelectedRows[0].DataBoundItem;
-            ServicioDeVideoclub.Pelicula peliculaAlquilar = (ServicioDeVideoclub.Pelicula)DGVPelis.SelectedRows[0].DataBoundItem;
-            
-            DateTime fecha = DateTFechaAlquilar.Value;
-            string texto = await vid.AlquilaPeliculaAsync(clienteAlquilar, peliculaAlquilar, fecha) ?
-                "Se ha registrado el alquiler con éxito" : "No se ha podido registrar el alquiler";
+            if (DGVAlquileres == null || DGVPelis == null) {
+                MessageBox.Show("Debes seleccionar primero película y clientes");
+            } else {
+                ServicioDeVideoclub.Cliente clienteAlquilar = (ServicioDeVideoclub.Cliente)DGVClientes.SelectedRows[0].DataBoundItem;
+                ServicioDeVideoclub.Pelicula peliculaAlquilar = (ServicioDeVideoclub.Pelicula)DGVPelis.SelectedRows[0].DataBoundItem;
 
-            MessageBox.Show(texto);
+                DateTime fecha = DateTFechaAlquilar.Value;
+                string texto = await vid.AlquilaPeliculaAsync(clienteAlquilar, peliculaAlquilar, fecha) ?
+                    "Se ha registrado el alquiler con éxito" : "No se ha podido registrar el alquiler";
 
-            DGVPelis.DataSource = await vid.DevuelvePeliculasSinAlquilarAsync();
+                MessageBox.Show(texto);
 
+                DGVPelis.DataSource = await vid.DevuelvePeliculasSinAlquilarAsync();
+            }
         }
 
         private async void BtDevolver_Click(object sender, EventArgs e) {
