@@ -20,6 +20,12 @@
   <wsdl:message name="IVideoclubServicio_AnadePelicula_OutputMessage">
     <wsdl:part name="parameters" element="tns:AnadePeliculaResponse" />
   </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_AlquilaPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlquilaPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_AlquilaPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlquilaPeliculaResponse" />
+  </wsdl:message>
   <wsdl:message name="IVideoclubServicio_EliminarCliente_InputMessage">
     <wsdl:part name="parameters" element="tns:EliminarCliente" />
   </wsdl:message>
@@ -31,6 +37,12 @@
   </wsdl:message>
   <wsdl:message name="IVideoclubServicio_EliminarPelicula_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_IniciarPrimeraConexion_InputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarPrimeraConexion" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_IniciarPrimeraConexion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarPrimeraConexionResponse" />
   </wsdl:message>
   <wsdl:message name="IVideoclubServicio_DevuelveClientes_InputMessage">
     <wsdl:part name="parameters" element="tns:DevuelveClientes" />
@@ -62,6 +74,30 @@
   <wsdl:message name="IVideoclubServicio_DevuelvePeliculasPorNombre_OutputMessage">
     <wsdl:part name="parameters" element="tns:DevuelvePeliculasPorNombreResponse" />
   </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelveClientesPorNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveClientesPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelveClientesPorNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveClientesPorNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelvePeliculasSinAlquilar_InputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelvePeliculasSinAlquilar" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelvePeliculasSinAlquilar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelvePeliculasSinAlquilarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_FinalizarAlquilerPelicula_InputMessage">
+    <wsdl:part name="parameters" element="tns:FinalizarAlquilerPelicula" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_FinalizarAlquilerPelicula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FinalizarAlquilerPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelveAlquilerPorNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveAlquilerPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="IVideoclubServicio_DevuelveAlquilerPorNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevuelveAlquilerPorNombreResponse" />
+  </wsdl:message>
   <wsdl:message name="IVideoclubServicio_DevuelveTiposPeliculas_InputMessage">
     <wsdl:part name="parameters" element="tns:DevuelveTiposPeliculas" />
   </wsdl:message>
@@ -77,6 +113,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/AnadePelicula" message="tns:IVideoclubServicio_AnadePelicula_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/AnadePeliculaResponse" message="tns:IVideoclubServicio_AnadePelicula_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AlquilaPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/AlquilaPelicula" message="tns:IVideoclubServicio_AlquilaPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/AlquilaPeliculaResponse" message="tns:IVideoclubServicio_AlquilaPelicula_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EliminarCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/EliminarCliente" message="tns:IVideoclubServicio_EliminarCliente_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/EliminarClienteResponse" message="tns:IVideoclubServicio_EliminarCliente_OutputMessage" />
@@ -84,6 +124,10 @@
     <wsdl:operation name="EliminarPelicula">
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/EliminarPelicula" message="tns:IVideoclubServicio_EliminarPelicula_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/EliminarPeliculaResponse" message="tns:IVideoclubServicio_EliminarPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IniciarPrimeraConexion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/IniciarPrimeraConexion" message="tns:IVideoclubServicio_IniciarPrimeraConexion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/IniciarPrimeraConexionResponse" message="tns:IVideoclubServicio_IniciarPrimeraConexion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DevuelveClientes">
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelveClientes" message="tns:IVideoclubServicio_DevuelveClientes_InputMessage" />
@@ -104,6 +148,22 @@
     <wsdl:operation name="DevuelvePeliculasPorNombre">
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombre" message="tns:IVideoclubServicio_DevuelvePeliculasPorNombre_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombreResponse" message="tns:IVideoclubServicio_DevuelvePeliculasPorNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveClientesPorNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelveClientesPorNombre" message="tns:IVideoclubServicio_DevuelveClientesPorNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelveClientesPorNombreResponse" message="tns:IVideoclubServicio_DevuelveClientesPorNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DevuelvePeliculasSinAlquilar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasSinAlquilar" message="tns:IVideoclubServicio_DevuelvePeliculasSinAlquilar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasSinAlquilarResponse" message="tns:IVideoclubServicio_DevuelvePeliculasSinAlquilar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FinalizarAlquilerPelicula">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/FinalizarAlquilerPelicula" message="tns:IVideoclubServicio_FinalizarAlquilerPelicula_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/FinalizarAlquilerPeliculaResponse" message="tns:IVideoclubServicio_FinalizarAlquilerPelicula_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveAlquilerPorNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelveAlquilerPorNombre" message="tns:IVideoclubServicio_DevuelveAlquilerPorNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelveAlquilerPorNombreResponse" message="tns:IVideoclubServicio_DevuelveAlquilerPorNombre_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DevuelveTiposPeliculas">
       <wsdl:input wsaw:Action="http://tempuri.org/IVideoclubServicio/DevuelveTiposPeliculas" message="tns:IVideoclubServicio_DevuelveTiposPeliculas_InputMessage" />
@@ -130,6 +190,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AlquilaPelicula">
+      <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/AlquilaPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="EliminarCliente">
       <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/EliminarCliente" style="document" />
       <wsdl:input>
@@ -141,6 +210,15 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarPelicula">
       <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/EliminarPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciarPrimeraConexion">
+      <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/IniciarPrimeraConexion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -186,6 +264,42 @@
     </wsdl:operation>
     <wsdl:operation name="DevuelvePeliculasPorNombre">
       <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveClientesPorNombre">
+      <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/DevuelveClientesPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevuelvePeliculasSinAlquilar">
+      <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasSinAlquilar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinalizarAlquilerPelicula">
+      <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/FinalizarAlquilerPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevuelveAlquilerPorNombre">
+      <soap:operation soapAction="http://tempuri.org/IVideoclubServicio/DevuelveAlquilerPorNombre" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

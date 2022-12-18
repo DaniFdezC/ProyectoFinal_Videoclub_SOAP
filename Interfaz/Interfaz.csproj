@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlquilerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlquilerForm.Designer.cs">
+      <DependentUpon>AlquilerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,9 +79,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utiles\ControladorPaneles.cs" />
     <Compile Include="Utiles\ConvertidorATexto.cs" />
     <Compile Include="Utiles\Generos.cs" />
+    <EmbeddedResource Include="AlquilerForm.resx">
+      <DependentUpon>AlquilerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientesForm.resx">
       <DependentUpon>ClientesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,14 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <None Include="Connected Services\ServicioDeVideoclub\Interfaz.ServicioDeVideoclub.Alquiler.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServicioDeVideoclub\Interfaz.ServicioDeVideoclub.Cliente.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -128,12 +140,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\videoclub.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blockbuster.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -152,15 +158,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1-18632_free-film-wallpaper-clip-art-movie-logo-without-background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\peliculaR.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\peliculaR1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\lupaR.png" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +165,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\eliminarR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientesR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peliculasR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alquilarR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peliculaR.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

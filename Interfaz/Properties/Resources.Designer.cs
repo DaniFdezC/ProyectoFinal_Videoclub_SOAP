@@ -63,9 +63,9 @@ namespace Interfaz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1_18632_free_film_wallpaper_clip_art_movie_logo_without_background {
+        internal static System.Drawing.Bitmap alquilarR {
             get {
-                object obj = ResourceManager.GetObject("1-18632_free-film-wallpaper-clip-art-movie-logo-without-background", resourceCulture);
+                object obj = ResourceManager.GetObject("alquilarR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Interfaz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap blockbuster {
+        internal static System.Drawing.Bitmap clientesR {
             get {
-                object obj = ResourceManager.GetObject("blockbuster", resourceCulture);
+                object obj = ResourceManager.GetObject("clientesR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,29 +113,9 @@ namespace Interfaz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap peliculaR {
+        internal static System.Drawing.Bitmap peliculasR {
             get {
-                object obj = ResourceManager.GetObject("peliculaR", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap peliculaR1 {
-            get {
-                object obj = ResourceManager.GetObject("peliculaR1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap videoclub {
-            get {
-                object obj = ResourceManager.GetObject("videoclub", resourceCulture);
+                object obj = ResourceManager.GetObject("peliculasR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

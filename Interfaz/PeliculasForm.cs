@@ -14,10 +14,12 @@ using System.Windows.Forms;
 namespace Interfaz {
     public partial class PeliculasForm : Form {
         ServicioDeVideoclub.VideoclubServicioClient vid;
+        Form formularioPrincipal;
 
-        public PeliculasForm(ServicioDeVideoclub.VideoclubServicioClient vid) {
+        public PeliculasForm(ServicioDeVideoclub.VideoclubServicioClient vid, Form formularioPrincipal) {
             InitializeComponent();
             this.vid = vid;
+            this.formularioPrincipal = formularioPrincipal;
         }
 
         private async void BtMostrarPeliculas_Click(object sender, EventArgs e) {
@@ -137,6 +139,11 @@ namespace Interfaz {
         private void ActivarPanelAnadirPelicula() {
             ControladorPaneles.ActivarDesactivar(PnAnadirPelicula, PanelTablasPelis);
             ControladorPaneles.DesactivarPaneles(PanelEliminarIzda, PanelBuscarIzda);
+        }
+
+        private void BtVolver_Click(object sender, EventArgs e) {
+            formularioPrincipal.Show();
+            this.Close();
         }
 
     }

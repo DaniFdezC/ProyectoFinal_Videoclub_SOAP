@@ -57,6 +57,7 @@
             this.PanelTablasPelis = new System.Windows.Forms.Panel();
             this.DGVPelis = new System.Windows.Forms.DataGridView();
             this.PanelArriba = new System.Windows.Forms.Panel();
+            this.BtVolver = new System.Windows.Forms.Button();
             this.LabelGestion = new System.Windows.Forms.Label();
             this.PnAnadirPelicula.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumYear)).BeginInit();
@@ -204,6 +205,7 @@
             this.BtMostrarPeliculas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtMostrarPeliculas.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtMostrarPeliculas.ForeColor = System.Drawing.Color.White;
+            this.BtMostrarPeliculas.Image = global::Interfaz.Properties.Resources.peliculasR;
             this.BtMostrarPeliculas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtMostrarPeliculas.Location = new System.Drawing.Point(0, 0);
             this.BtMostrarPeliculas.Name = "BtMostrarPeliculas";
@@ -537,6 +539,7 @@
             this.PanelTablasPelis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelTablasPelis.Location = new System.Drawing.Point(0, 0);
             this.PanelTablasPelis.Name = "PanelTablasPelis";
+            this.PanelTablasPelis.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.PanelTablasPelis.Size = new System.Drawing.Size(840, 607);
             this.PanelTablasPelis.TabIndex = 22;
             this.PanelTablasPelis.Visible = false;
@@ -545,23 +548,26 @@
             // 
             this.DGVPelis.AllowUserToAddRows = false;
             this.DGVPelis.AllowUserToDeleteRows = false;
+            this.DGVPelis.AllowUserToResizeRows = false;
             this.DGVPelis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DGVPelis.BackgroundColor = System.Drawing.Color.Lavender;
+            this.DGVPelis.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVPelis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVPelis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVPelis.Location = new System.Drawing.Point(0, 0);
+            this.DGVPelis.Location = new System.Drawing.Point(10, 0);
             this.DGVPelis.Name = "DGVPelis";
             this.DGVPelis.ReadOnly = true;
             this.DGVPelis.RowHeadersVisible = false;
             this.DGVPelis.RowHeadersWidth = 51;
             this.DGVPelis.RowTemplate.Height = 24;
             this.DGVPelis.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVPelis.Size = new System.Drawing.Size(840, 607);
+            this.DGVPelis.Size = new System.Drawing.Size(830, 607);
             this.DGVPelis.TabIndex = 2;
             // 
             // PanelArriba
             // 
             this.PanelArriba.BackColor = System.Drawing.Color.Blue;
+            this.PanelArriba.Controls.Add(this.BtVolver);
             this.PanelArriba.Controls.Add(this.LabelGestion);
             this.PanelArriba.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelArriba.Location = new System.Drawing.Point(0, 0);
@@ -569,12 +575,26 @@
             this.PanelArriba.Size = new System.Drawing.Size(1182, 46);
             this.PanelArriba.TabIndex = 28;
             // 
+            // BtVolver
+            // 
+            this.BtVolver.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtVolver.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtVolver.ForeColor = System.Drawing.Color.White;
+            this.BtVolver.Location = new System.Drawing.Point(0, 0);
+            this.BtVolver.Name = "BtVolver";
+            this.BtVolver.Size = new System.Drawing.Size(105, 46);
+            this.BtVolver.TabIndex = 1;
+            this.BtVolver.Text = "Volver";
+            this.BtVolver.UseVisualStyleBackColor = true;
+            this.BtVolver.Click += new System.EventHandler(this.BtVolver_Click);
+            // 
             // LabelGestion
             // 
             this.LabelGestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelGestion.AutoSize = true;
             this.LabelGestion.Font = new System.Drawing.Font("Arial Black", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelGestion.ForeColor = System.Drawing.Color.Yellow;
+            this.LabelGestion.ForeColor = System.Drawing.Color.White;
             this.LabelGestion.Location = new System.Drawing.Point(431, 0);
             this.LabelGestion.Name = "LabelGestion";
             this.LabelGestion.Size = new System.Drawing.Size(319, 38);
@@ -591,7 +611,9 @@
             this.Controls.Add(this.PanelIzda);
             this.Controls.Add(this.PanelArriba);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "PeliculasForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PeliculasForm";
             this.PnAnadirPelicula.ResumeLayout(false);
             this.PnAnadirPelicula.PerformLayout();
@@ -650,5 +672,6 @@
         private System.Windows.Forms.Button BtEnviarPeli;
         private System.Windows.Forms.Panel PanelTablasPelis;
         private System.Windows.Forms.Label LabelGestion;
+        private System.Windows.Forms.Button BtVolver;
     }
 }

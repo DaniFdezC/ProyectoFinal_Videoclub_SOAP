@@ -30,8 +30,5 @@ namespace ServicioVideoClub {
             this.Dni = dni;
         }
 
-        public override string ToString() {
-            return $"{Nombre} {Apellido}, direccion {Direccion}, DNI {Dni}";
-        }
     }
 }

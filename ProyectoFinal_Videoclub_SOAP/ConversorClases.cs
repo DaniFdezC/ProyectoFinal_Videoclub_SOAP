@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace ServicioVideoClub {
-    public static class ConversorClases {
+    public static class MapeadorClases {
 
         public static Negocio.PeliculaNegocio[] ConversorPeliculasANegocio(ServicioVideoClub.Pelicula[] peliculasSinMapear) {
             List<PeliculaNegocio> peliculasMapeadas = new List<PeliculaNegocio>();
@@ -46,6 +46,25 @@ namespace ServicioVideoClub {
             return clientesMapeados.ToArray();
         }
 
+        public static Negocio.AlquilerNegocio[] ConversorAlquileresANegocio(ServicioVideoClub.Alquiler[] alquileresSinMapear) {
+            List<AlquilerNegocio> alquileresMapeados = new List<AlquilerNegocio>();
+
+            foreach (Alquiler alquiler in alquileresSinMapear) {
+                alquileresMapeados.Add(ConversorAlquilerANegocio(alquiler));
+            }
+
+            return alquileresMapeados.ToArray();
+        }
+        public static ServicioVideoClub.Alquiler[] ConversorAlquileresAServidor(Negocio.AlquilerNegocio[] alquileresSinMapear) {
+            List<Alquiler> alquileresMapeados = new List<Alquiler>();
+
+            foreach (AlquilerNegocio alquiler in alquileresSinMapear) {
+                alquileresMapeados.Add(ConversorAlquilerAServidor(alquiler));
+            }
+
+            return alquileresMapeados.ToArray();
+        }
+
 
         public static Negocio.ClienteNegocio ConversorClienteANegocio(ServicioVideoClub.Cliente cl) {
             return new Negocio.ClienteNegocio() {
@@ -72,7 +91,8 @@ namespace ServicioVideoClub {
                 Id = peli.Id,
                 Titulo = peli.Titulo,
                 Genero = peli.Genero,
-                FechaInsercion = peli.FechaInsercion
+                FechaInsercion = peli.FechaInsercion,
+                Alquilada = peli.Alquilada
             };
         }
         public static ServicioVideoClub.Pelicula ConversorPeliculaAServidor(Negocio.PeliculaNegocio peli) {
@@ -80,7 +100,28 @@ namespace ServicioVideoClub {
                 Id = peli.Id,
                 Titulo = peli.Titulo,
                 Genero = peli.Genero,
-                FechaInsercion = peli.FechaInsercion
+                FechaInsercion = peli.FechaInsercion,
+                Alquilada = peli.Alquilada
+            };
+        }
+
+
+        public static Negocio.AlquilerNegocio ConversorAlquilerANegocio(ServicioVideoClub.Alquiler alquiler) {
+            return new Negocio.AlquilerNegocio() {
+                Id = alquiler.Id,
+                NombreCliente = alquiler.NombreCliente,
+                TituloPelicula = alquiler.TituloPelicula,
+                FechaAlquiler = alquiler.FechaAlquiler,
+                Devuelto = alquiler.Devuelto
+            };
+        }
+        public static ServicioVideoClub.Alquiler ConversorAlquilerAServidor(Negocio.AlquilerNegocio alquiler) {
+            return new ServicioVideoClub.Alquiler() {
+                Id = alquiler.Id,
+                NombreCliente = alquiler.NombreCliente,
+                TituloPelicula = alquiler.TituloPelicula,
+                FechaAlquiler = alquiler.FechaAlquiler,
+                Devuelto = alquiler.Devuelto
             };
         }
 

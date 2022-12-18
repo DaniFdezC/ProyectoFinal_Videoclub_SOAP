@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interfaz.Utiles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,91 +13,113 @@ using System.Windows.Forms;
 namespace Interfaz {
     public partial class ClientesForm : Form {
         ServicioDeVideoclub.VideoclubServicioClient vid;
-        public ClientesForm(ServicioDeVideoclub.VideoclubServicioClient vid) {
+        Form formularioPrincipal;
+        public ClientesForm(ServicioDeVideoclub.VideoclubServicioClient vid, Form formularioPrincipal) {
             InitializeComponent();
-            MuestraMostrar();
             this.vid = vid;
+            this.formularioPrincipal = formularioPrincipal;
         }
 
-        private void BtMostrarClientes_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Cliente[] clientes = vid.DevuelveClientes();
+        private async void BtMostrarClientes_Click(object sender, EventArgs e) {
+            ActivarPanelesMostrarClientes();
+
+            ServicioDeVideoclub.Cliente[] clientes = await vid.DevuelveClientesAsync();
 
             DGVClientes.DataSource = clientes;
+        }
 
-            MuestraMostrar();
+        private void ActivarPanelesMostrarClientes() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
+            ControladorPaneles.DesactivarPaneles(PanelBuscarIzda, PanelEliminarIzda);
         }
 
         private void BtAnadirCliente_Click(object sender, EventArgs e) {
-            MuestraAnadir();
+            ActivarPanelAnadirPelicula();
         }
-        private async void BtEnviar_Click(object sender, EventArgs e) {
-            string nombre = TxNombre.Text;
-            string apellido = TxApellido.Text;
-            string direccion = TxDireccion.Text;
-            string dni = TxDni.Text;
 
-            string texto = await vid.AnadeClienteAsync(nombre, apellido, direccion, dni) ?
-                "Se ha creado el cliente con exito" : "No se ha podido crear el cliente";
+        private void ActivarPanelAnadirPelicula() {
+            ControladorPaneles.ActivarDesactivar(PnAnadirCliente, PanelTablasClientes);
+            ControladorPaneles.DesactivarPaneles(PanelEliminarIzda, PanelBuscarIzda);
+        }
+
+        private async void BtEnviarCliente_Click(object sender, EventArgs e) {
+            string nombre = TxNombre.Text;
+            string apellidos = TxApellidos.Text;
+            string direccion = TxDireccion.Text;
+            string dni = TxDNI.Text;
+
+            string texto = await vid.AnadeClienteAsync(nombre, apellidos, direccion, dni) ?
+                "Se ha creado el cliente con éxito" : "No se ha podido crear el cliente";
 
             MessageBox.Show(texto);
 
-            ReseteaTexto();
+            ReseteaTextBoxAnadir();
         }
 
+        private void ReseteaTextBoxAnadir() {
+            TxNombre.Text = "";
+            TxApellidos.Text = "";
+            TxDireccion.Text = "";
+            TxDNI.Text = "";
+        }
 
         private void BtEliminaCliente_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Cliente[] clientes = vid.DevuelveClientes();
-
-            DGVElimCl.DataSource = clientes;
-
-            MuestraEliminar();
+            ActivarPanelesEliminarClientes();
         }
 
-        private void BtElim_Click(object sender, EventArgs e) {
-            ServicioDeVideoclub.Cliente clienteAEliminar = (ServicioDeVideoclub.Cliente)DGVElimCl.SelectedRows[0].DataBoundItem;
-            MessageBox.Show(clienteAEliminar.Nombre + " " + clienteAEliminar.Id);
-            vid.EliminarClienteAsync(clienteAEliminar);
-            MessageBox.Show($"El cliente {clienteAEliminar.Nombre} {clienteAEliminar.Apellido} ha sido eliminado con exito");
-            DGVElimCl.DataSource = vid.DevuelveClientes();
+        private void ActivarPanelesEliminarClientes() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
+            ControladorPaneles.ActivarDesactivar(PanelEliminarIzda, PanelBuscarIzda);
         }
 
-        private void ReseteaTexto() {
-            TxNombre.Text = "";
-            TxApellido.Text = "";
-            TxDireccion.Text = "";
-            TxDni.Text = "";
+        private void BtBuscarCliente_Click(object sender, EventArgs e) {
+            ActivarPanelesBuscarClientes();
         }
 
-        //
-        private void MuestraPanel(Panel panelAMostrar) {
-            foreach (Panel panel in this.Controls.OfType<Panel>()) {
-
-                if (panel == panelAMostrar)
-                    panel.Visible = true;
-                 
-                else
-                    panel.Visible = false;
-
-            }
+        private void ActivarPanelesBuscarClientes() {
+            ControladorPaneles.ActivarDesactivar(PanelTablasClientes, PnAnadirCliente);
+            ControladorPaneles.ActivarDesactivar(PanelBuscarIzda, PanelEliminarIzda);
         }
 
-        private void MuestraMostrar() {
-            PnMostrar.Visible = true;
-            PnAnadir.Visible = false;
-            PnEliminar.Visible = false;
+        private void BtBuscarPorNombre_Click(object sender, EventArgs e) {
+            TxNombreClienteBuscar.Text = "";
+
+            ControladorPaneles.ActivarPanel(PanelPorNombre);
+
         }
 
-        private void MuestraAnadir() {
-            PnMostrar.Visible = false;
-            PnAnadir.Visible = true;
-            PnEliminar.Visible = false;
+        private async void BtEnviarPorNombre_Click(object sender, EventArgs e) {
+            string nombre = TxNombreClienteBuscar.Text;
+            ServicioDeVideoclub.Cliente[] resultado = await vid.DevuelveClientesPorNombreAsync(nombre);
+
+            ModificaTablaAMostrar(resultado);
         }
 
-        private void MuestraEliminar() {
-            PnMostrar.Visible = false;
-            PnAnadir.Visible = false;
-            PnEliminar.Visible = true;
+        private void ModificaTablaAMostrar(ServicioDeVideoclub.Cliente[] clientesMostrar) {
+            if (clientesMostrar.Length == 0)
+                MessageBox.Show("No hay clientes que mostrar");
+            else
+                DGVClientes.DataSource = clientesMostrar;
         }
 
+        private async void BtEnviarEliminar_Click(object sender, EventArgs e) {
+            ServicioDeVideoclub.Cliente clienteAEliminar = (ServicioDeVideoclub.Cliente)DGVClientes.SelectedRows[0].DataBoundItem;
+            bool eliminado = await vid.EliminarClienteAsync(clienteAEliminar);
+
+            string mensaje;
+            if(eliminado) 
+                mensaje = $"El cliente {clienteAEliminar.Nombre} {clienteAEliminar.Apellido} ha sido eliminado con exito";
+            else
+                mensaje = "No se ha podido eliminar el cliente";
+
+            MessageBox.Show(mensaje);
+
+            DGVClientes.DataSource = await vid.DevuelveClientesAsync();
+        }
+
+        private void BtVolver_Click(object sender, EventArgs e) {
+            formularioPrincipal.Show();
+            this.Close();
+        }
     }
 }

@@ -15,14 +15,17 @@ namespace ServicioVideoClub {
         public DateTime FechaInsercion { get; set; }
         [DataMember]
         public string Genero { get; set; }
+        [DataMember]
+        public bool Alquilada { get; set; }
         public Pelicula() {
 
         }
-        public Pelicula(int id, string titulo, DateTime fechaInsercion, string genero) {
+        public Pelicula(int id, string titulo, DateTime fechaInsercion, string genero, bool alquilada) {
             this.Id = id;
             this.Titulo = titulo;
             this.FechaInsercion = fechaInsercion;
             this.Genero = genero;
+            Alquilada = alquilada;
         }
 
         public override string ToString() {

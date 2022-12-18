@@ -132,6 +132,9 @@ namespace Interfaz.ServicioDeVideoclub {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AlquiladaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FechaInsercionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -150,6 +153,19 @@ namespace Interfaz.ServicioDeVideoclub {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Alquilada {
+            get {
+                return this.AlquiladaField;
+            }
+            set {
+                if ((this.AlquiladaField.Equals(value) != true)) {
+                    this.AlquiladaField = value;
+                    this.RaisePropertyChanged("Alquilada");
+                }
             }
         }
         
@@ -215,6 +231,115 @@ namespace Interfaz.ServicioDeVideoclub {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Alquiler", Namespace="http://schemas.datacontract.org/2004/07/ServicioVideoClub")]
+    [System.SerializableAttribute()]
+    public partial class Alquiler : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool DevueltoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaAlquilerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TituloPeliculaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Devuelto {
+            get {
+                return this.DevueltoField;
+            }
+            set {
+                if ((this.DevueltoField.Equals(value) != true)) {
+                    this.DevueltoField = value;
+                    this.RaisePropertyChanged("Devuelto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaAlquiler {
+            get {
+                return this.FechaAlquilerField;
+            }
+            set {
+                if ((this.FechaAlquilerField.Equals(value) != true)) {
+                    this.FechaAlquilerField = value;
+                    this.RaisePropertyChanged("FechaAlquiler");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NombreCliente {
+            get {
+                return this.NombreClienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreClienteField, value) != true)) {
+                    this.NombreClienteField = value;
+                    this.RaisePropertyChanged("NombreCliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TituloPelicula {
+            get {
+                return this.TituloPeliculaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TituloPeliculaField, value) != true)) {
+                    this.TituloPeliculaField = value;
+                    this.RaisePropertyChanged("TituloPelicula");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicioDeVideoclub.IVideoclubServicio")]
     public interface IVideoclubServicio {
@@ -231,6 +356,12 @@ namespace Interfaz.ServicioDeVideoclub {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AnadePelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/AnadePeliculaResponse")]
         System.Threading.Tasks.Task<bool> AnadePeliculaAsync(string nombre, string genero, System.DateTime fecha);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AlquilaPelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/AlquilaPeliculaResponse")]
+        bool AlquilaPelicula(Interfaz.ServicioDeVideoclub.Cliente cliente, Interfaz.ServicioDeVideoclub.Pelicula pelicula, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/AlquilaPelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/AlquilaPeliculaResponse")]
+        System.Threading.Tasks.Task<bool> AlquilaPeliculaAsync(Interfaz.ServicioDeVideoclub.Cliente cliente, Interfaz.ServicioDeVideoclub.Pelicula pelicula, System.DateTime fecha);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/EliminarCliente", ReplyAction="http://tempuri.org/IVideoclubServicio/EliminarClienteResponse")]
         bool EliminarCliente(Interfaz.ServicioDeVideoclub.Cliente cliente);
         
@@ -242,6 +373,12 @@ namespace Interfaz.ServicioDeVideoclub {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/EliminarPelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/EliminarPeliculaResponse")]
         System.Threading.Tasks.Task<bool> EliminarPeliculaAsync(Interfaz.ServicioDeVideoclub.Pelicula pelicula);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/IniciarPrimeraConexion", ReplyAction="http://tempuri.org/IVideoclubServicio/IniciarPrimeraConexionResponse")]
+        void IniciarPrimeraConexion();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/IniciarPrimeraConexion", ReplyAction="http://tempuri.org/IVideoclubServicio/IniciarPrimeraConexionResponse")]
+        System.Threading.Tasks.Task IniciarPrimeraConexionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveClientes", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveClientesResponse")]
         Interfaz.ServicioDeVideoclub.Cliente[] DevuelveClientes();
@@ -272,6 +409,30 @@ namespace Interfaz.ServicioDeVideoclub {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombre", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasPorNombreResponse")]
         System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorNombreAsync(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveClientesPorNombre", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveClientesPorNombreResponse")]
+        Interfaz.ServicioDeVideoclub.Cliente[] DevuelveClientesPorNombre(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveClientesPorNombre", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveClientesPorNombreResponse")]
+        System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Cliente[]> DevuelveClientesPorNombreAsync(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasSinAlquilar", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasSinAlquilarResponse")]
+        Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasSinAlquilar();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasSinAlquilar", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelvePeliculasSinAlquilarResponse")]
+        System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasSinAlquilarAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/FinalizarAlquilerPelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/FinalizarAlquilerPeliculaResponse")]
+        bool FinalizarAlquilerPelicula(Interfaz.ServicioDeVideoclub.Alquiler alquiler);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/FinalizarAlquilerPelicula", ReplyAction="http://tempuri.org/IVideoclubServicio/FinalizarAlquilerPeliculaResponse")]
+        System.Threading.Tasks.Task<bool> FinalizarAlquilerPeliculaAsync(Interfaz.ServicioDeVideoclub.Alquiler alquiler);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveAlquilerPorNombre", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveAlquilerPorNombreResponse")]
+        Interfaz.ServicioDeVideoclub.Alquiler[] DevuelveAlquilerPorNombre(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveAlquilerPorNombre", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveAlquilerPorNombreResponse")]
+        System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Alquiler[]> DevuelveAlquilerPorNombreAsync(string nombre);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVideoclubServicio/DevuelveTiposPeliculas", ReplyAction="http://tempuri.org/IVideoclubServicio/DevuelveTiposPeliculasResponse")]
         string[] DevuelveTiposPeliculas();
@@ -323,6 +484,14 @@ namespace Interfaz.ServicioDeVideoclub {
             return base.Channel.AnadePeliculaAsync(nombre, genero, fecha);
         }
         
+        public bool AlquilaPelicula(Interfaz.ServicioDeVideoclub.Cliente cliente, Interfaz.ServicioDeVideoclub.Pelicula pelicula, System.DateTime fecha) {
+            return base.Channel.AlquilaPelicula(cliente, pelicula, fecha);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AlquilaPeliculaAsync(Interfaz.ServicioDeVideoclub.Cliente cliente, Interfaz.ServicioDeVideoclub.Pelicula pelicula, System.DateTime fecha) {
+            return base.Channel.AlquilaPeliculaAsync(cliente, pelicula, fecha);
+        }
+        
         public bool EliminarCliente(Interfaz.ServicioDeVideoclub.Cliente cliente) {
             return base.Channel.EliminarCliente(cliente);
         }
@@ -337,6 +506,14 @@ namespace Interfaz.ServicioDeVideoclub {
         
         public System.Threading.Tasks.Task<bool> EliminarPeliculaAsync(Interfaz.ServicioDeVideoclub.Pelicula pelicula) {
             return base.Channel.EliminarPeliculaAsync(pelicula);
+        }
+        
+        public void IniciarPrimeraConexion() {
+            base.Channel.IniciarPrimeraConexion();
+        }
+        
+        public System.Threading.Tasks.Task IniciarPrimeraConexionAsync() {
+            return base.Channel.IniciarPrimeraConexionAsync();
         }
         
         public Interfaz.ServicioDeVideoclub.Cliente[] DevuelveClientes() {
@@ -377,6 +554,38 @@ namespace Interfaz.ServicioDeVideoclub {
         
         public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasPorNombreAsync(string nombre) {
             return base.Channel.DevuelvePeliculasPorNombreAsync(nombre);
+        }
+        
+        public Interfaz.ServicioDeVideoclub.Cliente[] DevuelveClientesPorNombre(string nombre) {
+            return base.Channel.DevuelveClientesPorNombre(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Cliente[]> DevuelveClientesPorNombreAsync(string nombre) {
+            return base.Channel.DevuelveClientesPorNombreAsync(nombre);
+        }
+        
+        public Interfaz.ServicioDeVideoclub.Pelicula[] DevuelvePeliculasSinAlquilar() {
+            return base.Channel.DevuelvePeliculasSinAlquilar();
+        }
+        
+        public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Pelicula[]> DevuelvePeliculasSinAlquilarAsync() {
+            return base.Channel.DevuelvePeliculasSinAlquilarAsync();
+        }
+        
+        public bool FinalizarAlquilerPelicula(Interfaz.ServicioDeVideoclub.Alquiler alquiler) {
+            return base.Channel.FinalizarAlquilerPelicula(alquiler);
+        }
+        
+        public System.Threading.Tasks.Task<bool> FinalizarAlquilerPeliculaAsync(Interfaz.ServicioDeVideoclub.Alquiler alquiler) {
+            return base.Channel.FinalizarAlquilerPeliculaAsync(alquiler);
+        }
+        
+        public Interfaz.ServicioDeVideoclub.Alquiler[] DevuelveAlquilerPorNombre(string nombre) {
+            return base.Channel.DevuelveAlquilerPorNombre(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<Interfaz.ServicioDeVideoclub.Alquiler[]> DevuelveAlquilerPorNombreAsync(string nombre) {
+            return base.Channel.DevuelveAlquilerPorNombreAsync(nombre);
         }
         
         public string[] DevuelveTiposPeliculas() {

@@ -39,5 +39,10 @@ namespace Interfaz.Utiles {
             DesactivarPanel(panel1);
             DesactivarPanel(panel2);    
         }
+        internal static void DesactivarPaneles(Control panel1, Control panel2, Control panel3) {
+            DesactivarPanel(panel1);
+            DesactivarPanel(panel2);
+            DesactivarPanel(panel3);
+        }
     }
 }

@@ -111,6 +111,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alquiler.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ConversorClases.cs" />
     <Compile Include="IVideoclubServicio.cs" />

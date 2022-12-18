@@ -12,6 +12,7 @@
   <xs:element name="Cliente" nillable="true" type="tns:Cliente" />
   <xs:complexType name="Pelicula">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Alquilada" type="xs:boolean" />
       <xs:element minOccurs="0" name="FechaInsercion" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Genero" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
@@ -31,4 +32,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPelicula" nillable="true" type="tns:ArrayOfPelicula" />
+  <xs:complexType name="Alquiler">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Devuelto" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FechaAlquiler" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NombreCliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TituloPelicula" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Alquiler" nillable="true" type="tns:Alquiler" />
+  <xs:complexType name="ArrayOfAlquiler">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Alquiler" nillable="true" type="tns:Alquiler" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAlquiler" nillable="true" type="tns:ArrayOfAlquiler" />
 </xs:schema>

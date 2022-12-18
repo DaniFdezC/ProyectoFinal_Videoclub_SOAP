@@ -18,6 +18,8 @@ namespace ServicioVideoClub {
         [OperationContract]
         Task<bool> AnadePelicula(string nombre, string genero, DateTime fecha);
 
+        [OperationContract]
+        Task<bool> AlquilaPelicula(Cliente cliente, Pelicula pelicula, DateTime fecha);
 
         [OperationContract]
         Task<bool> EliminarCliente(Cliente cliente);
@@ -25,6 +27,8 @@ namespace ServicioVideoClub {
         [OperationContract]
         Task<bool> EliminarPelicula(Pelicula pelicula);
 
+        [OperationContract]
+        void IniciarPrimeraConexion();
 
         [OperationContract]
         Cliente[] DevuelveClientes();
@@ -41,6 +45,18 @@ namespace ServicioVideoClub {
 
         [OperationContract]
         Pelicula[] DevuelvePeliculasPorNombre(string nombre);
+
+        [OperationContract]
+        Cliente[] DevuelveClientesPorNombre(string nombre);
+
+        [OperationContract]
+        Pelicula[] DevuelvePeliculasSinAlquilar();
+
+        [OperationContract]
+        Task<bool> FinalizarAlquilerPelicula(Alquiler alquiler);
+
+        [OperationContract]
+        Alquiler[] DevuelveAlquilerPorNombre(string nombre);
 
         [OperationContract]
         string[] DevuelveTiposPeliculas();

@@ -17,14 +17,31 @@ namespace Interfaz {
         }
 
         private void BtClientes_Click(object sender, EventArgs e) {
-            ClientesForm frm = new ClientesForm(vid);
+            ClientesForm frm = new ClientesForm(vid, this);
             frm.Show();
+            this.Hide();
         }
 
         private void BtPeliculas_Click(object sender, EventArgs e) {
-            PeliculasForm frm = new PeliculasForm(vid);
+            PeliculasForm frm = new PeliculasForm(vid, this);
             frm.Show();
+            this.Hide();
         }
 
+        private void BtAlquilar_Click(object sender, EventArgs e) {
+            AlquilerForm frm = new AlquilerForm(vid, this);
+            frm.Show();
+            this.Hide();
+        }
+
+        private void PrincipalForm_Load(object sender, EventArgs e) {
+            vid.IniciarPrimeraConexion();
+        }
+
+        private void PrincipalForm_FormClosing(object sender, FormClosingEventArgs e) {
+            if (MessageBox.Show("¿Estás seguro que quieres cerrar?", "Salir de la app", MessageBoxButtons.YesNo) == DialogResult.No) {
+                e.Cancel = true;
+            }
+        }
     }
 }
