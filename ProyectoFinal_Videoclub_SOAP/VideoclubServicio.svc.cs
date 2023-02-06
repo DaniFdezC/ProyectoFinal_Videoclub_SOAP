@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace ServicioVideoClub {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "VideoclubServicio" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select VideoclubServicio.svc or VideoclubServicio.svc.cs at the Solution Explorer and start debugging.
+    // Se ignoran las posibles inyecciones SQL, habria que hacer un insert parameters en lugar de la query como tal
     public class VideoclubServicio : IVideoclubServicio {
         static Videoclub videoclub = new Videoclub();
 
